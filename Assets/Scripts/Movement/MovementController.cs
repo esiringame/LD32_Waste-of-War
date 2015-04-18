@@ -10,13 +10,15 @@ public class MovementController : MonoBehaviour {
 	private Vector3 west = Vector3.left;
 	private Vector3 south = Vector3.back;
 	public Vector3 Direction;
+	public float TimeKeyPressed;
 
 
 	void Start () {
 		PosX = transform.position.x;
 		PosY = transform.position.y;
 		PosZ = transform.position.z;
-		Direction = east;
+		Direction = Vector3.zero;
+		TimeKeyPressed = Time.realtimeSinceStartup;
 	}
 	
 	// Update is called once per frame
@@ -38,20 +40,23 @@ public class MovementController : MonoBehaviour {
 		case -5:
 		default :
 		}*/
-		if (horizontalInput > 0)
-			Direction = east;
-		else if (horizontalInput < 0)
-			Direction = west;
-		else if(verticalInput>0)
-			Direction=north;
-		else if(verticalInput<0)
-			Direction=south;
-
-		if(Direction!=transform.forward) {
-			transform.forward=Direction;
-		}
-		else {
-			GoForward();
+		if (TimeKeyPressed + 5f < Time.realtimeSinceStartup) {
+			if (horizontalInput > 0)
+				Direction = east;
+			else if (horizontalInput < 0)
+				Direction = west;
+			else if (verticalInput > 0)
+				Direction = north;
+			else if (verticalInput < 0)
+				Direction = south;
+			else
+				return;
+			if (Direction != transform.forward) {
+				transform.forward = Direction;
+			} else {
+				GoForward ();
+			}
+			TimeKeyPressed = Time.realtimeSinceStartup;
 		}
 
 
