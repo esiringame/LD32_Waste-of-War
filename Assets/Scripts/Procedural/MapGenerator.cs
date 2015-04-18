@@ -20,18 +20,18 @@ public class MapGenerator
 
         var sectorGenerator = new SectorGenerator {
             Height = sizeY,
-            Width = sizeX,
+            Width = SectorWidth,
             NumberByType =
                 {
-                    {CaseData.Stone, StonesNumberBySector},
-                    {CaseData.Obstacle, ObstaclesNumberBySector}
+                    {CaseData.Obstacle, ObstaclesNumberBySector},
+                    {CaseData.Stone, StonesNumberBySector}
                 }
         };
 
         for (int i = 0; i < sizeX / SectorWidth; i++)
         {
-            int redMinesNumber = Random.Range(MinesNumberBySector - MinesNumberBySector / 3,
-                MinesNumberBySector + MinesNumberBySector / 3);
+            int redMinesNumber = Random.Range(MinesNumberBySector / 2 - MinesNumberBySector / 3,
+                MinesNumberBySector / 2 + MinesNumberBySector / 3);
 
             sectorGenerator.NumberByType[CaseData.RedMines] = redMinesNumber;
             sectorGenerator.NumberByType[CaseData.GreenMines] = MinesNumberBySector - redMinesNumber;
@@ -72,15 +72,34 @@ public class MapGenerator
                     {
                         y = Random.Range(0, Height);
                         x = Random.Range(0, Width);
+                        visitedCount++;
 
                         if (visitedCount >= Width * Height)
                             throw new Exception("Too much special cases considering the sector size !");
                     }
-                    while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase);
+                    while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase && ConditionsByCaseType(map, type, originSectorX + x, originSectorY + y));
 
                     map[originSectorY + y][originSectorX + x] = type;
                 }
             }
+        }
+
+        private bool ConditionsByCaseType(CaseData[][] map, CaseData type, int x, int y)
+        {
+            switch (type)
+            {
+                case CaseData.Obstacle:
+
+                    for (int i = -1; i <= 1 ; i++)
+                        for (int j = -1; j <= 1; j++)
+                            if (y + i >= 0 && x + j >= 0 && y + i < map.Length && x + j < map[0].Length)
+                                if (map[y + i][x + j] == CaseData.Obstacle)
+                                    return false;
+
+                    break;
+            }
+
+            return true;
         }
     }
 }
