@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 734dc73498d3e5145af9d7273a26f6df
+=======
+guid: 4ad02dc83da735c4e8d945332b9202f6
+>>>>>>> 3cfb1f52323d01af3ffff1aeee39bfb1ec1f2fa7
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
