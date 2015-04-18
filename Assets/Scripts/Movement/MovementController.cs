@@ -11,6 +11,7 @@ public class MovementController : MonoBehaviour {
 	private Vector3 south = Vector3.back;
 	public Vector3 Direction;
 	public float TimeKeyPressed;
+	public float NextCaseDistance =0.1f;
 
 
 	void Start () {
@@ -40,7 +41,7 @@ public class MovementController : MonoBehaviour {
 		case -5:
 		default :
 		}*/
-		if (TimeKeyPressed + 5f < Time.realtimeSinceStartup) {
+		if (TimeKeyPressed + 0.5f < Time.realtimeSinceStartup) {
 			if (horizontalInput > 0)
 				Direction = east;
 			else if (horizontalInput < 0)
@@ -65,6 +66,6 @@ public class MovementController : MonoBehaviour {
 	}
 
 	void GoForward() {
-		transform.position = transform.position + 0.1f * transform.forward;
+		transform.position = transform.position + NextCaseDistance * transform.forward;
 	}
 }
