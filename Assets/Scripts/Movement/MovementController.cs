@@ -11,7 +11,10 @@ public class MovementController : MonoBehaviour {
 	private Vector3 south = Vector3.back;
 	public Vector3 Direction;
 	public float TimeKeyPressed;
-	public float NextCaseDistance =0.1f;
+	private float startTime;
+	public float NextCaseDistance = 0.1f;
+	private Vector3 startMarker;
+	private Vector3 endMarker;
 
 
 	void Start () {
@@ -41,7 +44,7 @@ public class MovementController : MonoBehaviour {
 		case -5:
 		default :
 		}*/
-		if (TimeKeyPressed + 0.5f < Time.realtimeSinceStartup) {
+		//if (TimeKeyPressed + 0.5f < Time.realtimeSinceStartup) {
 			if (horizontalInput > 0)
 				Direction = east;
 			else if (horizontalInput < 0)
@@ -55,10 +58,14 @@ public class MovementController : MonoBehaviour {
 			if (Direction != transform.forward) {
 				transform.forward = Direction;
 			} else {
-				GoForward ();
+				startTime = Time.time;
+				startMarker = transform.position;
+				endMarker = startMarker+NextCaseDistance*transform.forward;
+				//while(Time.time<0.5f)
+					GoForward ();
 			}
 			TimeKeyPressed = Time.realtimeSinceStartup;
-		}
+		//}
 
 
 		/*if(horizontalInput!=0)
@@ -67,5 +74,8 @@ public class MovementController : MonoBehaviour {
 
 	void GoForward() {
 		transform.position = transform.position + NextCaseDistance * transform.forward;
+		/*float fracJourney = (Time.time-startTime)/0.5f;
+		transform.position=Vector3.Lerp(startMarker,endMarker,fracJourney);*/
+
 	}
 }
