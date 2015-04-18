@@ -5,27 +5,61 @@ public class MovementController : MonoBehaviour {
 	public float PosX=1;
 	public float PosY=1;
 	public float PosZ=1;
+	private Vector3 east = Vector3.right;
+	private Vector3 north = Vector3.forward;
+	private Vector3 west = Vector3.left;
+	private Vector3 south = Vector3.back;
+	public Vector3 Direction;
 
 
 	void Start () {
 		PosX = transform.position.x;
 		PosY = transform.position.y;
 		PosZ = transform.position.z;
+		Direction = east;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		float horizontalInput = Input.GetAxis ("Horizontal");
+		float verticalInput = Input.GetAxis ("Vertical");
 		PosX = transform.position.x;
 		PosY = transform.position.y;
-		PosZ = transform.position.z;
-		/*if (PosX < 5) 
-			transform.position = transform.position + new Vector3 (0.1f, 0, 0);
-		else
-			transform.position = transform.position + new Vector3 (-0.3f, 0, -0.2f);
-		if (PosZ < 5)
-			transform.position = transform.position + new Vector3 (0, 0, 0.1f);
-		else
-			transform.position = transform.position + new Vector3 (-0.2f, 0, -0.3f);*/
-		GetComponent<Rigidbody> ().AddTorque (new Vector3 (1, 1, 1));
+		PosZ = transform.position.z; 
+		/*switch(3*horizontalInput + verticalInput) {
+		case 5 :
+		case 3:
+		case 2:
+		case 1:
+		case 0:
+		case -1:
+		case -2 :
+		case -3:
+		case -5:
+		default :
+		}*/
+		if (horizontalInput > 0)
+			Direction = east;
+		else if (horizontalInput < 0)
+			Direction = west;
+		else if(verticalInput>0)
+			Direction=north;
+		else if(verticalInput<0)
+			Direction=south;
+
+		if(Direction!=transform.forward) {
+			transform.forward=Direction;
+		}
+		else {
+			GoForward();
+		}
+
+
+		/*if(horizontalInput!=0)
+		transform.forward=horizontalInput*transform.right;*/
+	}
+
+	void GoForward() {
+		transform.position = transform.position + 0.1f * transform.forward;
 	}
 }
