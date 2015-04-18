@@ -6,9 +6,16 @@ using DesignPattern;
 
 public class Grid : DesignPattern.Singleton<Grid>
 {
-
-    public CaseData[][] dataGrid = new CaseData[5][];
     public CaseBehaviour[][] grid;
+	
+	public int Height
+	{
+		get { return grid.Length; }
+	}
+	public int Width
+	{
+		get { return grid [0].Length; }
+	}
      
     void Start(){
         //mapGenerator();
@@ -18,13 +25,13 @@ public class Grid : DesignPattern.Singleton<Grid>
         int h = 10;
         int w = 30;
 
-        grid = new CaseBehaviour[h][];
+		grid = new CaseBehaviour[h][];
         for (int i = 0; i < grid.Length; i++)
         {
             grid[i] = new CaseBehaviour[w];
         }
 
-        dataGrid = MapGenerator.GenerateMap(w, h, 1);
+		CaseData[][] dataGrid = MapGenerator.GenerateMap(w, h, 1);
 
             for (int y = 0; y < h; y++)
             {
