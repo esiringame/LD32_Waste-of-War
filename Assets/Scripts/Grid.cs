@@ -4,46 +4,11 @@ using DesignPattern;
 
 
 
-public class Grid : MonoBehaviour
+public class Grid : DesignPattern.Singleton<Grid>
 {
 
     public CaseData[][] dataGrid = new CaseData[5][];
-    private CaseBehaviour[][] grid;
-    
-    void mapGenerator()
-    {
-        for (int i = 0; i < dataGrid.Length; i++)
-        {
-            dataGrid[i] = new CaseData[5];
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            for (int j = 0; j < 5; j++)
-            {
-                if (i == 0)
-                {
-                    dataGrid[i][j] = CaseData.RedMines;
-                }
-                if (i == 1)
-                {
-                    dataGrid[i][j] = CaseData.GreenMines;
-                }
-                if (i == 2)
-                {
-                    dataGrid[i][j] = CaseData.Obstacle;
-                }
-                if (i == 3)
-                {
-                    dataGrid[i][j] = CaseData.EmptyCase;
-                }
-                if (i == 4)
-                {
-                    dataGrid[i][j] = CaseData.Stone;
-                }
-            }
-        }
-    }  
+    public CaseBehaviour[][] grid;
      
     void Start(){
         //mapGenerator();
