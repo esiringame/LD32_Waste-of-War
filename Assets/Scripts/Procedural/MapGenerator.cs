@@ -7,7 +7,7 @@ public class MapGenerator
     private const int SectorWidth = 5;
 
     private const int StonesNumberBySector = 6;
-    private const int ObstaclesNumberBySector = 10;
+    private const int ObstaclesNumberBySector = 7;
     private const int MinesNumberBySector = 12;
 
     public static CaseData[][] GenerateMap(int sizeX, int sizeY, int seed)
@@ -18,7 +18,22 @@ public class MapGenerator
         for (int i = 0; i < sizeY; i++)
             map[i] = new CaseData[sizeX];
 
+        // Begin
+
         var sectorGenerator = new SectorGenerator {
+            Height = sizeY,
+            Width = 3,
+            NumberByType =
+                {
+                    {CaseData.Obstacle, ObstaclesNumberBySector}
+                }
+        };
+
+        sectorGenerator.GenerateSector(map, 0, 0);
+
+        // Center
+
+        sectorGenerator = new SectorGenerator {
             Height = sizeY,
             Width = SectorWidth,
             NumberByType =
@@ -28,15 +43,24 @@ public class MapGenerator
                 }
         };
 
-        for (int i = 0; i < sizeX / SectorWidth; i++)
+        for (int i = 0; i < sizeX / SectorWidth - 1; i++)
         {
             int redMinesNumber = Random.Range(MinesNumberBySector / 2 - MinesNumberBySector / 3,
                 MinesNumberBySector / 2 + MinesNumberBySector / 3);
 
             sectorGenerator.NumberByType[CaseData.RedMines] = redMinesNumber;
             sectorGenerator.NumberByType[CaseData.GreenMines] = MinesNumberBySector - redMinesNumber;
-            sectorGenerator.GenerateSector(map, i * SectorWidth, 0);
+            sectorGenerator.GenerateSector(map, 3 + i * SectorWidth, 0);
         }
+
+        // End
+
+        sectorGenerator = new SectorGenerator {
+            Height = sizeY,
+            Width = 2
+        };
+
+        sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 1) * SectorWidth, 0);
 
         return map;
     }
@@ -75,9 +99,9 @@ public class MapGenerator
                         visitedCount++;
 
                         if (visitedCount >= Width * Height)
-                            throw new Exception("Too much special cases considering the sector size !");
+                            throw new Exception(string.Format("Can't place a {0} case considering the conditions !", type));
                     }
-                    while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase && ConditionsByCaseType(map, type, originSectorX + x, originSectorY + y));
+                    while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase || !ConditionsByCaseType(map, type, originSectorX + x, originSectorY + y));
 
                     map[originSectorY + y][originSectorX + x] = type;
                 }
