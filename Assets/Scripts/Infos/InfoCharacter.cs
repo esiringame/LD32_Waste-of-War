@@ -8,7 +8,7 @@ public class InfoCharacter : MonoBehaviour {
 	private bool so_saw_saut_sow_sceau_seau_sot;
 
 	public CaseBehaviour currentCase{ get; private set; }
-	public AudioClip dead trash_dead, water;
+	public AudioClip dead, trash_dead, water;
 
 	// Use this for initialization
 	void Start () {
@@ -52,7 +52,7 @@ public class InfoCharacter : MonoBehaviour {
 		so_saw_saut_sow_sceau_seau_sot = false;
 		--nbSomaliens;
 		rocks = 0;
-		if(Random.value() > 0.5)
+		if(Random.value> 0.5)
 			GetComponent<AudioSource>().PlayOneShot(dead, 1.0F);
 		else
 			GetComponent<AudioSource>().PlayOneShot(trash_dead, 1.0F);
