@@ -10,15 +10,10 @@ public class IntroGameState : GameState
 
     public override void Init()
     {
+        GameManager.PauseChrono();
     }
 
     public override void Update()
-    {
-        //if (isEnd)
-        //    GameManager.ChangeState(new PlayGameState(GameManager));
-    }
-
-    public override void End()
     {
     }
 }
