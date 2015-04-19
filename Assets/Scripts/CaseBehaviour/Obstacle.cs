@@ -11,7 +11,7 @@ public class Obstacle : CaseBehaviour<Obstacle> {
 
     public override void OnEnter(PlayerController player)
     {
-        throw new NotImplementedException("YOU SHOULD NOT PASS");
+        
     }
 
     public override void PutStone(PlayerController player)

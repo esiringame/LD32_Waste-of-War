@@ -4,52 +4,93 @@ using System.Collections;
 public class PlayerControlToSuppress : MonoBehaviour {
 	
 	public float walkSpeed = 1; // player left right walk speed
-	private bool _isGrounded = true; // is player on the ground?
 	
 	Animator animator;
-	
 	//animation states - the values in the animator conditions
-	const int STATE_IDLE = 0;
-	const int STATE_WALK = 1;
+	const int STATE_IDLE_R = 0;
+	const int STATE_WALK_R = 10;
+	const int STATE_IDLE_L = 1;
+	const int STATE_WALK_L = 11;
+	const int STATE_IDLE_B = 3;
+	const int STATE_WALK_B = 13;
+	const int STATE_IDLE_T = 2;
+	const int STATE_WALK_T = 12;
 	
-	string _currentDirection = "left";
-	int _currentAnimationState = STATE_IDLE;
+	string currentDirection = "right";
+	int _currentAnimationState = STATE_IDLE_L;
 	
 	// Use this for initialization
 	void Start()
 	{
 		//define the animator attached to the player
 		animator = this.GetComponent<Animator>();
-	
-	}
+		}
 	
 	// FixedUpdate is used insead of Update to better handle the physics based jump
 	void FixedUpdate()
 	{
 		
-		if (Input.GetKey ("left") )
+		if (Input.GetKey ("right"))
 		{
-			changeDirection ("right");
-			transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
-			
-			if(_isGrounded)
-				changeState(STATE_WALK);
-
+			if(currentDirection =="right"){
+				transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
+				changeState(STATE_WALK_R);
+			}else{
+				changeState(STATE_IDLE_R);
+				this.currentDirection="right";
+			}
 		}
-		else if (Input.GetKey ("right") )
+		else if (Input.GetKey ("left") )
 		{
-			changeDirection ("left");
-			transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
+			if(currentDirection=="left"){
+				transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
+				
+				changeState(STATE_WALK_L);
+			}else{
+				changeState(STATE_IDLE_L);
+				
+				this.currentDirection="left";
+				
+			}
 			
-			if(_isGrounded)
-				changeState(STATE_WALK);
-
+		}else if (Input.GetKey ("up") )
+		{
+			if(currentDirection=="top"){
+				
+				transform.Translate(Vector3.left * 0 * Time.deltaTime);
+				changeState(STATE_WALK_T);
+			}else{
+				changeState(STATE_IDLE_T);
+				
+				this.currentDirection="top";
+				
+			}
+			
+		}else if (Input.GetKey ("down") )
+		{
+			if(currentDirection=="back"){
+				transform.Translate(Vector3.left * 0 * Time.deltaTime);
+				changeState(STATE_WALK_B);
+			}else{
+				changeState(STATE_IDLE_B);
+				
+				this.currentDirection="back";
+				
+			}
 			
 		}
 		else
 		{
-			if(_currentDirection=="right" || _currentDirection=="left")
-				changeState(STATE_IDLE);
+			if(currentDirection=="right"){
+				changeState(STATE_IDLE_R);
+			}else if(currentDirection=="left"){
+				changeState (STATE_IDLE_L);
+			}
+			else if(currentDirection=="top"){
+				changeState (STATE_IDLE_T);
+			}else if(currentDirection=="back"){
+				changeState (STATE_IDLE_B);
+			}
 		}
 		
 	}
@@ -64,12 +105,36 @@ public class PlayerControlToSuppress : MonoBehaviour {
 		
 		switch (state) {
 			
-		case STATE_WALK:
-			animator.SetInteger ("state", STATE_WALK);
+		case STATE_WALK_R:
+			animator.SetInteger ("state", STATE_WALK_R);
 			break;
 			
-		case STATE_IDLE:
-			animator.SetInteger ("state", STATE_IDLE);
+		case STATE_IDLE_R:
+			animator.SetInteger ("state", STATE_IDLE_R);
+			break;
+			
+		case STATE_WALK_L:
+			animator.SetInteger ("state", STATE_WALK_L);
+			break;
+			
+		case STATE_IDLE_L:
+			animator.SetInteger ("state", STATE_IDLE_L);
+			break;
+
+		case STATE_WALK_T:
+			animator.SetInteger ("state", STATE_WALK_T);
+			break;
+			
+		case STATE_IDLE_T:
+			animator.SetInteger ("state", STATE_IDLE_T);
+			break;
+
+		case STATE_WALK_B:
+			animator.SetInteger ("state", STATE_WALK_B);
+			break;
+			
+		case STATE_IDLE_B:
+			animator.SetInteger ("state", STATE_IDLE_B);
 			break;
 			
 		}
@@ -84,31 +149,8 @@ public class PlayerControlToSuppress : MonoBehaviour {
 	{
 		if (coll.gameObject.name == "Floor")
 		{
-			_isGrounded = true;
-			changeState(STATE_IDLE);
+			changeState(STATE_IDLE_R);
 			
-		}
-		
-	}
-	
-	//--------------------------------------
-	// Flip player sprite for left/right walking
-	//--------------------------------------
-	void changeDirection(string direction)
-	{
-		
-		if (_currentDirection != direction)
-		{
-			if (direction == "right")
-			{
-				transform.Rotate (0, 180, 0);
-				_currentDirection = "right";
-			}
-			else if (direction == "left")
-			{
-				transform.Rotate (0, 180, 0);
-				_currentDirection = "left";
-			}
 		}
 		
 	}

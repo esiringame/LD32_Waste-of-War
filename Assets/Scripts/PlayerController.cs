@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public bool IsBucketFilled = false;
     public float MoveSpeed = 1;
 
-    public int Lifes { get; private set; }
-    public int Rocks { get; private set; }
+    public int Lifes;
+    public int Rocks;
     public Vector2 PositionCase { get; private set; }
     public bool IsJumping { get; private set; }
 
@@ -44,13 +44,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-
+       
         if (transform.position != Destination)
         {
             if (Vector3.Dot(Direction, Destination - transform.position) > 0)
             {
                 transform.position += Direction * MoveSpeed * Time.deltaTime;
-                
+
                 Vector3 lastPosition = new Vector3(PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
                 if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3)
                 {
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (transform.position == Destination)
+        if (!alreadyLeaveCase && transform.position == Destination)
         {
             Vector3 newDirection = Vector3.zero;
 
@@ -95,7 +95,22 @@ public class PlayerController : MonoBehaviour
 
                 if (pressedTimeElapsed >= PressedTimePeriod)
                 {
-                    Destination += Direction * CaseSize;
+                    Vector2 misDirection = new Vector2((int)(PositionCase.x + newDirection.x), (int)(PositionCase.y + newDirection.y));
+                    bool isObstacle = false;
+                    if (misDirection.y >= 0 && misDirection.x >= 0 && misDirection.x < Grid.Instance.Width && misDirection.y < Grid.Instance.Height)
+                    {
+                        if (Grid.Instance.grid[(int)misDirection.y][(int)misDirection.x].IsObstacle)
+                        {
+                            isObstacle = true;
+                        }
+                    }
+                    else
+                        isObstacle = true;
+                    
+                    if (!isObstacle)
+                    {
+                        Destination += Direction * CaseSize;
+                    }
                 }
             }
             else
