@@ -10,7 +10,7 @@ public class IntroGameState : GameState
 
     public override void Init()
     {
-        GameManager.PauseChrono();
+        GameManager.Pause();
     }
 
     public override void Update()
