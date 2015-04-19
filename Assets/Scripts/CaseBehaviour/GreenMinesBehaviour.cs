@@ -33,6 +33,34 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         Fragmentation();
     }
 
+    public void Fragmentation()
+    {
+        List<ICaseBehaviour> adjacents = CasesAdjacentes();
+   
+        for (int i = 0; i < 3 && adjacents.Count >0; i++)
+        {
+            // Choisit aléatoirement une des cases adjacentes
+            
+            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
+            int x= randomCase.PositionX;
+            int y= randomCase.PositionY;
+            // On la supprime de la liste pour ne pas retomber dessus
+            adjacents.Remove(randomCase);
+
+            // Fragmentation d'une mine verte ou range
+            if (Random.value > 0.5f)
+            {
+                Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<RedMinesBehaviour>();
+            }
+            else
+            {
+                Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<GreenMinesBehaviour>();
+            }
+        }
+        // Transforme cette case en case vide
+        Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
+    }
+
     //Genère les cases adjacentes à la mine verte
     private List<ICaseBehaviour> CasesAdjacentes()
     {
@@ -53,35 +81,6 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
                 }
             }
         }
-        return adjacents;     
-    }
-
-    public void Fragmentation()
-    {
-        List<ICaseBehaviour> adjacents = CasesAdjacentes();
-   
-        for (int i = 0; i < 3 && adjacents.Count >0; i++)
-        {
-            // Choisit aléatoirement une des cases adjacentes
-            
-            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
-            int x= randomCase.PositionX;
-            int y= randomCase.PositionY;
-            // On la supprime de la liste pour ne pas retomber dessus
-            adjacents.Remove(randomCase);
-
-            // Fragmentation d'une mine verte ou range
-            if (Random.value > 0.5f)
-            {
-                Grid.Instance.grid[y][x] = Factory<RedMinesBehaviour>.New("Case/RedMines");
-            }
-
-            else
-            {
-                Grid.Instance.grid[y][x] = Factory<GreenMinesBehaviour>.New("Case/GreenMines");
-            }
-        }
-        // Transforme cette case en case vide
-        Grid.Instance.grid[PositionY][PositionX] = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase"); 
+        return adjacents;
     }
 }

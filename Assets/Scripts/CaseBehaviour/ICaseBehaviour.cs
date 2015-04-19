@@ -2,6 +2,8 @@
 
 public interface ICaseBehaviour
 {
+    GameObject GameObject { get; }
+
     int PositionX { get; }
     int PositionY { get; }
     bool HasStone { get; set; }
@@ -11,4 +13,7 @@ public interface ICaseBehaviour
     void OnLeave(PlayerController player);
     void PutStone(PlayerController player);
     void SetPosition(int x, int y);
+
+    TBehaviour ChangeBehaviour<TBehaviour>()
+        where TBehaviour : CaseBehaviour<TBehaviour>;
 }
