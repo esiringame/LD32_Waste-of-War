@@ -5,6 +5,11 @@ using DesignPattern;
 public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
     where T : Factory<T>
 {
+    public GameObject GameObject
+    {
+        get { return gameObject; }
+    }
+
     public int PositionX { get; protected set; }
     public int PositionY { get; protected set; }
     public bool HasStone { get; set; }
@@ -38,5 +43,13 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
     {
         PositionX = x;
         PositionY = y;
+    }
+
+    public TBehaviour ChangeBehaviour<TBehaviour>()
+        where TBehaviour : CaseBehaviour<TBehaviour>
+    {
+        TBehaviour newBehaviour = gameObject.AddComponent<TBehaviour>();
+        DestroyImmediate(this);
+        return newBehaviour;
     }
 }

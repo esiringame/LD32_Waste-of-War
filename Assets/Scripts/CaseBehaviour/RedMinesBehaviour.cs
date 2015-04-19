@@ -47,5 +47,6 @@ public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
     {
         player.Die();
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
+        Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
     }
 }

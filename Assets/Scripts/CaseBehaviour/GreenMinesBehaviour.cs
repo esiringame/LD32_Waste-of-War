@@ -6,7 +6,21 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
 {
     public AudioClip boom;
     public AudioClip mineArmed;
+    private float timer;
+    PlayerController m_player;
 
+    void Update()
+    {
+        timer += Time.unscaledDeltaTime;
+        if (timer > 3.0f)
+        {
+            Fragmentation();
+            if (m_player != null)
+            {
+                m_player.Die();
+            }
+        }
+    }
     public override bool IsObstacle
     {
         get { return false; }
@@ -15,13 +29,15 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public override void OnEnter(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(mineArmed, 1.0F);
-        //player.mode = mode.GreenMine;
+        timer = 0.0f;
+        m_player = player;
     }
 
     public override void OnLeave(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
         Fragmentation();
+        m_player = null;
 
         if (!player.IsJumping)
             player.Die();
@@ -33,6 +49,34 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         Fragmentation();
     }
 
+    public void Fragmentation()
+    {
+        List<ICaseBehaviour> adjacents = CasesAdjacentes();
+   
+        for (int i = 0; i < 3 && adjacents.Count > 0; i++)
+        {
+            // Choisit aléatoirement une des cases adjacentes
+            
+            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count)];
+            int x= randomCase.PositionX;
+            int y= randomCase.PositionY;
+            // On la supprime de la liste pour ne pas retomber dessus
+            adjacents.Remove(randomCase);
+
+            // Fragmentation d'une mine verte ou range
+            if (Random.value > 0.5f)
+            {
+                Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<RedMinesBehaviour>();
+            }
+            else
+            {
+                Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<GreenMinesBehaviour>();
+            }
+        }
+        // Transforme cette case en case vide
+        Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
+    }
+
     //Genère les cases adjacentes à la mine verte
     private List<ICaseBehaviour> CasesAdjacentes()
     {
@@ -42,9 +86,9 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             for (int j = -1; j < 2; j++)
             {
                 // Condition aux bords
-                if (PositionX + i < 10 && PositionY + j < 30 && PositionX + i > 0 && PositionY + j > 0)
+                if (PositionY + i < Grid.Instance.Height && PositionX + j < Grid.Instance.Width && PositionY + i >= 0 && PositionX + j >= 0)
                 {
-                    ICaseBehaviour CurrentCase = Grid.Instance.grid[j][i];
+                    ICaseBehaviour CurrentCase = Grid.Instance.grid[PositionY+i][PositionX+j];
                     // On ne prend pas en compte les mines et obstacles
                     if (CurrentCase is EmptyCaseBehaviour)
                     {
@@ -53,35 +97,6 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
                 }
             }
         }
-        return adjacents;     
-    }
-
-    public void Fragmentation()
-    {
-        List<ICaseBehaviour> adjacents = CasesAdjacentes();
-   
-        for (int i = 0; i < 3 && adjacents.Count >0; i++)
-        {
-            // Choisit aléatoirement une des cases adjacentes
-            
-            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
-            int x= randomCase.PositionX;
-            int y= randomCase.PositionY;
-            // On la supprime de la liste pour ne pas retomber dessus
-            adjacents.Remove(randomCase);
-
-            // Fragmentation d'une mine verte ou range
-            if (Random.value > 0.5f)
-            {
-                Grid.Instance.grid[y][x] = Factory<RedMinesBehaviour>.New("Case/RedMines");
-            }
-
-            else
-            {
-                Grid.Instance.grid[y][x] = Factory<GreenMinesBehaviour>.New("Case/GreenMines");
-            }
-        }
-        // Transforme cette case en case vide
-        Grid.Instance.grid[PositionY][PositionX] = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase"); 
+        return adjacents;
     }
 }
