@@ -129,15 +129,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 481704023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb1b99475ef20943ab0dc18ef21a744, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e5cdb7427b09d4d9db03f43557eb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PosX: 1
-  PosY: 1
-  PosZ: 1
-  TimeKeyPressed: 0
-  NextCaseDistance: 1
-  Speed: 1
+  LifesAtStartup: 5
+  RocksAtStartup: 1
+  IsBucketFilled: 0
+  MoveSpeed: 1
+  dead: {fileID: 0}
+  trash_dead: {fileID: 0}
+  water: {fileID: 0}
 --- !u!1 &858412394
 GameObject:
   m_ObjectHideFlags: 0
