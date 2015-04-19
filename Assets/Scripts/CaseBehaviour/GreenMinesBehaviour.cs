@@ -6,7 +6,21 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
 {
     public AudioClip boom;
     public AudioClip mineArmed;
+    private float timer;
+    PlayerController m_player;
 
+    void Update()
+    {
+        timer += Time.unscaledDeltaTime;
+        if (timer > 3.0f)
+        {
+            Fragmentation();
+            if (m_player != null)
+            {
+                m_player.Die();
+            }
+        }
+    }
     public override bool IsObstacle
     {
         get { return false; }
@@ -15,12 +29,15 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public override void OnEnter(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(mineArmed, 1.0F);
+        timer = 0.0f;
+        m_player = player;
     }
 
     public override void OnLeave(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
         Fragmentation();
+        m_player = null;
 
         if (!player.IsJumping)
             player.Die();
