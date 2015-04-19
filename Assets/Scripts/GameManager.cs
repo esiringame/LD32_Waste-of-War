@@ -44,14 +44,16 @@ public class GameManager : DesignPattern.Singleton<GameManager>
         }
     }
 
-    public void StartChrono()
+    public void Resume()
     {
         _chronometerEnabled = true;
+        Player.ControlEnabled = true;
     }
 
-    public void PauseChrono()
+    public void Pause()
     {
         _chronometerEnabled = false;
+        Player.ControlEnabled = false;
     }
 
     public void ResetChrono()

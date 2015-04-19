@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayGameState : GameState
+public class BeginGameState : GameState
 {
-    public PlayGameState(GameManager gameManager)
+    public BeginGameState(GameManager gameManager)
         : base(gameManager)
     {
     }
 
     public override void Init()
     {
-        GameManager.Resume();
+        GameManager.Pause();
     }
 
     public override void Update()
