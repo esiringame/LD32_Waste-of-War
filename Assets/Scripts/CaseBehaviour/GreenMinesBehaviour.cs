@@ -7,11 +7,14 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public AudioClip boom;
     public AudioClip mineArmed;
     private float timer;
-    PlayerController m_player;
+    PlayerController m_player = null;
 
     void Update()
     {
-        timer += Time.unscaledDeltaTime;
+        if (m_player != null)
+        {
+            timer += Time.unscaledDeltaTime;
+        }
         if (timer > 3.0f)
         {
             Fragmentation();
@@ -21,6 +24,7 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             }
         }
     }
+
     public override bool IsObstacle
     {
         get { return false; }
@@ -90,7 +94,7 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
                 {
                     ICaseBehaviour CurrentCase = Grid.Instance.grid[PositionY+i][PositionX+j];
                     // On ne prend pas en compte les mines et obstacles
-                    if (CurrentCase is EmptyCaseBehaviour)
+                    if (CurrentCase is EmptyCaseBehaviour && !CurrentCase.HasStone)
                     {
                         adjacents.Add(CurrentCase);
                     }
