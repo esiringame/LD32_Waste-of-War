@@ -10,13 +10,10 @@ public class VictoryGameState : GameState
 
     public override void Init()
     {
+        GameManager.PauseChrono();
     }
 
     public override void Update()
-    {
-    }
-
-    public override void End()
     {
     }
 }
