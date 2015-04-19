@@ -12,5 +12,4 @@ public abstract class GameState
 
     public abstract void Init();
     public abstract void Update();
-    public abstract void End();
 }

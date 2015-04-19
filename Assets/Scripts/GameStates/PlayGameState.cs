@@ -10,13 +10,10 @@ public class PlayGameState : GameState
 
     public override void Init()
     {
+        GameManager.StartChrono();
     }
 
     public override void Update()
-    {
-    }
-
-    public override void End()
     {
     }
 }

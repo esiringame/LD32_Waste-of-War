@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public int LifesAtStartup = 5;
     public int RocksAtStartup = 1;
     public bool IsBucketFilled = false;
+
+    public bool ControlEnabled = true;
     public float MoveSpeed = 1;
 
     public int Lifes;
@@ -71,11 +73,14 @@ public class PlayerController : MonoBehaviour
 
     void HandleInput()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        if (!ControlEnabled)
+            return;
 
         if (!alreadyLeaveCase && transform.position == Destination)
         {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+
             Vector3 newDirection = Vector3.zero;
 
             if (horizontalInput > 0)
