@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (transform.position == Destination)
+        if (!alreadyLeaveCase && transform.position == Destination)
         {
             Vector3 newDirection = Vector3.zero;
 
