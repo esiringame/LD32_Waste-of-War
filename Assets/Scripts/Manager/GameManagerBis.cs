@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-public class GameManager : MonoBehaviour
+public class GameManagerBis : MonoBehaviour
 {
 	public Text CounterTimeText;
 	public Button PauseButton;

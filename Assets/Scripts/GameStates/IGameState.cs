@@ -3,9 +3,9 @@ using System.Collections;
 
 public abstract class GameState
 {
-    protected readonly GameManagerBis GameManager;
+    protected readonly GameManager GameManager;
 
-    protected GameState(GameManagerBis gameManager)
+    protected GameState(GameManager gameManager)
     {
         GameManager = gameManager;
     }

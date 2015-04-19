@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManagerBis : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameState State;
     public PlayerController Player { get; private set; }
 
     void Awake()
     {
+        State = new IntroGameState(this);
+
         Player = GetComponentInChildren<PlayerController>();
     }
 
