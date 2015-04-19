@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 419710}
   - 114: {fileID: 11496446}
   m_Layer: 0
-  m_Name: GameGrid
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
