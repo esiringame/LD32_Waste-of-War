@@ -17,8 +17,8 @@ public class ScoreManager : Singleton<ScoreManager> {
 }
 
 public class Score : IEquatable<Score> , IComparable<Score>{
-	public string name{ get; set; };
-	public TimeSpan score{ get; set; };
+	public string name{ get; set; }
+	public TimeSpan score{ get; set; }
 	
 	public int CompareTo(Score compareScore)
 	{
