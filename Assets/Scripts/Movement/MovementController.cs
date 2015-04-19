@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class MovementController : MonoBehaviour
 {
 	public Vector2 PositionCase { get; private set; }
