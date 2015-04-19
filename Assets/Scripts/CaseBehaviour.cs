@@ -2,15 +2,41 @@
 using System.Collections;
 using DesignPattern;
 
-public class CaseBehaviour : Factory<CaseBehaviour> {
+public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
+    where T : Factory<T>
+{
+    public int PositionX { get; protected set; }
+    public int PositionY { get; protected set; }
+    public bool HasStone { get; set; }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public abstract bool IsObstacle { get; }
+
+    abstract public void OnEnter(PlayerController player);
+    virtual public void OnLeave(PlayerController player)
+    {
+
+    }
+
+    virtual public void PutStone(PlayerController player)
+    {
+        if (HasStone)
+        {
+            //TU PEUX PAS ?! (Son, ou quelque chose...)
+        }
+        else
+        {
+            if (player.IsInventoryEmpty())
+            {
+                player.RemoveRockFromInventory();
+                HasStone = true;
+            }
+            //Mettre le Sprite du caillou
+        }
+    }
+
+    public void SetPosition(int x, int y)
+    {
+        PositionX = x;
+        PositionY = y;
+    }
 }
