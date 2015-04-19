@@ -6,9 +6,9 @@ public class MovementController : MonoBehaviour {
 	public float PosY=1;
 	public float PosZ=1;
 	private Vector3 east = Vector3.right;
-	private Vector3 north = Vector3.forward;
+	private Vector3 north = Vector3.up;
 	private Vector3 west = Vector3.left;
-	private Vector3 south = Vector3.back;
+	private Vector3 south = Vector3.down;
 	public Vector3 Direction;
 	public float TimeKeyPressed;
 	public float NextCaseDistance =0.1f;
