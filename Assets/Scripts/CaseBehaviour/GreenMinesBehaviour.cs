@@ -15,7 +15,6 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public override void OnEnter(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(mineArmed, 1.0F);
-        //player.mode = mode.GreenMine;
     }
 
     public override void OnLeave(PlayerController player)
@@ -37,11 +36,11 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     {
         List<ICaseBehaviour> adjacents = CasesAdjacentes();
    
-        for (int i = 0; i < 3 && adjacents.Count >0; i++)
+        for (int i = 0; i < 3 && adjacents.Count > 0; i++)
         {
             // Choisit aléatoirement une des cases adjacentes
             
-            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
+            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count)];
             int x= randomCase.PositionX;
             int y= randomCase.PositionY;
             // On la supprime de la liste pour ne pas retomber dessus
@@ -70,9 +69,9 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             for (int j = -1; j < 2; j++)
             {
                 // Condition aux bords
-                if (PositionX + i < 10 && PositionY + j < 30 && PositionX + i > 0 && PositionY + j > 0)
+                if (PositionY + i < Grid.Instance.Height && PositionX + j < Grid.Instance.Width && PositionY + i >= 0 && PositionX + j >= 0)
                 {
-                    ICaseBehaviour CurrentCase = Grid.Instance.grid[j][i];
+                    ICaseBehaviour CurrentCase = Grid.Instance.grid[PositionY+i][PositionX+j];
                     // On ne prend pas en compte les mines et obstacles
                     if (CurrentCase is EmptyCaseBehaviour)
                     {

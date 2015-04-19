@@ -19,7 +19,7 @@ public class Grid : DesignPattern.Singleton<Grid>
 
     public Vector2 StartCase
     {
-        get { return new Vector2(0,0); }
+        get { return new Vector2(1,1); }
     }
 
     void Start()

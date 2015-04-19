@@ -49,7 +49,7 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
         where TBehaviour : CaseBehaviour<TBehaviour>
     {
         TBehaviour newBehaviour = gameObject.AddComponent<TBehaviour>();
-        Destroy(this);
+        DestroyImmediate(this);
         return newBehaviour;
     }
 }
