@@ -4,8 +4,8 @@ using DesignPattern;
 
 public class Grid : DesignPattern.Singleton<Grid>
 {
-    public int Height;
-    public int Width;
+    public int Height = 10;
+    public int Width = 30;
     public Vector2 StartCase;
 
     public ICaseBehaviour[][] grid { get; private set; }
