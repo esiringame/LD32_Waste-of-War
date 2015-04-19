@@ -8,11 +8,11 @@ public class EmptyCaseBehaviour : CaseBehaviour<EmptyCaseBehaviour> {
         get { return false; }
     }
 
-    public override void onEnter(GameObject player)
+    public override void OnEnter(PlayerController player)
     {
-        if (HasStone)
+        if (HasStone && !player.IsInventoryFull())
         {
-            //Ajouter un caillou au joueur (Verif capacité de l'inventaire)
+            player.AddRockToInventory();
             HasStone = false;
         }
     }

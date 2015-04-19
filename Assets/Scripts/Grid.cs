@@ -16,12 +16,14 @@ public class Grid : DesignPattern.Singleton<Grid>
 	{
 		get { return grid [0].Length; }
 	}
-     
-    void Start(){
-        //mapGenerator();
-        //int h = dataGrid.getLength(0);
-        //int w = dataGrid.getLength(1);
 
+    public Vector2 StartCase
+    {
+        get { return new Vector2(0,0); }
+    }
+
+    void Start()
+    {
         int h = 10;
         int w = 30;
 
@@ -43,32 +45,32 @@ public class Grid : DesignPattern.Singleton<Grid>
                     {
                         case CaseData.RedMines:
                             RedMinesBehaviour redMines = Factory<RedMinesBehaviour>.New("Case/RedMines");
-                            redMines.setPosition(x, y);
+                            redMines.SetPosition(x, y);
                             redMines.transform.position = new Vector3(x, y, 0);
                             grid[y][x] = redMines;
                             break;
                         case CaseData.GreenMines:
                             GreenMinesBehaviour greenMines = Factory<GreenMinesBehaviour>.New("Case/GreenMines");
-                            greenMines.setPosition(x, y);
+                            greenMines.SetPosition(x, y);
                             greenMines.transform.position = new Vector3(x, y, 0);
                             grid[y][x] = greenMines;
                             break;
                         case CaseData.Obstacle:
                             Obstacle obstacle = Factory<Obstacle>.New("Case/Obstacle");
-                            obstacle.setPosition(x, y);
+                            obstacle.SetPosition(x, y);
                             obstacle.transform.position = new Vector3(x, y, 0);
                             grid[y][x] = obstacle;
                             break;
                         case CaseData.Stone:
-                            EmptyCaseBehaviour stone = Factory<EmptyCaseBehaviour>.New("Case/Stone");
-                            stone.putStone();
-                            stone.setPosition(x, y);
-                            stone.transform.position = new Vector3(x, y, 0);
-                            grid[y][x] = stone;
+                            EmptyCaseBehaviour stoneCase = Factory<EmptyCaseBehaviour>.New("Case/Stone");
+                            stoneCase.HasStone = true;
+                            stoneCase.SetPosition(x, y);
+                            stoneCase.transform.position = new Vector3(x, y, 0);
+                            grid[y][x] = stoneCase;
                             break;
                         default:
                             EmptyCaseBehaviour emptyCase = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase");
-                            emptyCase.setPosition(x, y);
+                            emptyCase.SetPosition(x, y);
                             emptyCase.transform.position = new Vector3(x, y, 0);
                             grid[y][x] = emptyCase;
                             break;

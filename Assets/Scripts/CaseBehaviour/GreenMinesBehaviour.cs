@@ -12,27 +12,29 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         get { return false; }
     }
 
-    public override void onEnter(GameObject player)
+    public override void OnEnter(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(mineArmed, 1.0F);
         //player.mode = mode.GreenMine;
     }
 
-    public override void onLeave(GameObject player)
+    public override void OnLeave(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
-        fragmentation();
-        //player.die
+        Fragmentation();
+
+        if (!player.IsJumping)
+            player.Die();
     }
 
-    public override void putStone()
+    public override void PutStone(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
-        fragmentation();
+        Fragmentation();
     }
 
     //Genère les cases adjacentes à la mine verte
-    private List<ICaseBehaviour> casesAdjacentes()
+    private List<ICaseBehaviour> CasesAdjacentes()
     {
         List<ICaseBehaviour> adjacents = new List<ICaseBehaviour>();
         for (int i = -1; i < 2; i++)
@@ -54,9 +56,9 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         return adjacents;     
     }
 
-    public void fragmentation()
+    public void Fragmentation()
     {
-        List<ICaseBehaviour> adjacents = casesAdjacentes();
+        List<ICaseBehaviour> adjacents = CasesAdjacentes();
    
         for (int i = 0; i < 3 && adjacents.Count >0; i++)
         {

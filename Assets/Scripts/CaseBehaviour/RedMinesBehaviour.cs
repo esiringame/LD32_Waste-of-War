@@ -7,48 +7,45 @@ public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
     public AudioClip mineDisarmed;
     public AudioClip boom;
 
-    private bool isArmed = true;
-
     public override bool IsObstacle
     {
         get { return false; }
     }
 
-    public override void onEnter(GameObject player)
+    public override void OnEnter(PlayerController player)
     {
-        if (isArmed)
+        if (!HasStone)
         {
             GetComponent<AudioSource>().PlayOneShot(mineArmed, 1.0F);
         }
         else
         {
-            if (false)//!player.bagIsFull())
+            if (!player.IsInventoryFull())
             {
-                explosion(player);
+                Explosion(player);
             }
         }
     }
 
-    public override void onLeave(GameObject player)
+    public override void OnLeave(PlayerController player)
     {
-        if (isArmed)
+        if (!HasStone)
         {
-            explosion(player);
+            Explosion(player);
         }
     }
 
-    public override void putStone()
+    public override void PutStone(PlayerController player)
     {
-        if (isArmed)
+        if (!HasStone)
         {
-            isArmed = false;
             GetComponent<AudioSource>().PlayOneShot(mineDisarmed, 1.0F);
         }
     }
 
-    private void explosion(GameObject player)
+    private void Explosion(PlayerController player)
     {
-        //player.die;
+        player.Die();
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
     }
 }

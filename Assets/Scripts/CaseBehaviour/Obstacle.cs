@@ -9,13 +9,13 @@ public class Obstacle : CaseBehaviour<Obstacle> {
         get { return true; }
     }
 
-    public override void onEnter(GameObject player)
+    public override void OnEnter(PlayerController player)
     {
         throw new NotImplementedException("YOU SHOULD NOT PASS");
     }
 
-    public override void putStone()
+    public override void PutStone(PlayerController player)
     {
-
+        throw new NotImplementedException("YOU SHOULD NOT PASS");
     }
 }

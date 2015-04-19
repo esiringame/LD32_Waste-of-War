@@ -7,17 +7,17 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
 {
     public int PositionX { get; protected set; }
     public int PositionY { get; protected set; }
-    public bool HasStone { get; protected set; }
+    public bool HasStone { get; set; }
 
     public abstract bool IsObstacle { get; }
 
-    abstract public void onEnter(GameObject player);
-    virtual public void onLeave(GameObject player)
+    abstract public void OnEnter(PlayerController player);
+    virtual public void OnLeave(PlayerController player)
     {
 
     }
 
-    virtual public void putStone()
+    virtual public void PutStone(PlayerController player)
     {
         if (HasStone)
         {
@@ -25,12 +25,16 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
         }
         else
         {
-            HasStone = true;
+            if (player.IsInventoryEmpty())
+            {
+                player.RemoveRockFromInventory();
+                HasStone = true;
+            }
             //Mettre le Sprite du caillou
         }
     }
 
-    public void setPosition(int x, int y)
+    public void SetPosition(int x, int y)
     {
         PositionX = x;
         PositionY = y;
