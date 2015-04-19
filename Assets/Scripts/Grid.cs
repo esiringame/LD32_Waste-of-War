@@ -10,6 +10,7 @@ public class Grid : DesignPattern.Singleton<Grid>
 
     public ICaseBehaviour[][] grid { get; private set; }
 
+
     void Start()
     {
 		grid = new ICaseBehaviour[Height][];
