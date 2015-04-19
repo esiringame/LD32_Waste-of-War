@@ -1,21 +1,24 @@
 fileFormatVersion: 2
-guid: 4a63fc8d24e1fb04aafd410ee7f34163
-timeCreated: 1429480080
+<<<<<<< HEAD
+guid: 55a95124228dc9d48b03e20ddc213955
+timeCreated: 1429475039
+guid: 377940e38c47771478f0ed99b806c976
+timeCreated: 1429475311
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: map_terrain_128_0
-    21300002: map_terrain_128_1
-    21300004: map_terrain_128_2
-    21300006: map_terrain_128_3
-    21300008: map_terrain_128_4
-    21300010: map_terrain_128_5
-    21300012: map_terrain_128_6
-    21300014: map_terrain_128_7
-    21300016: map_terrain_128_8
-    21300018: map_terrain_128_9
-    21300020: map_terrain_128_10
-    21300022: map_terrain_128_11
+    21300000: map_character_128_0
+    21300002: map_character_128_1
+    21300004: map_character_128_2
+    21300006: map_character_128_3
+    21300008: map_character_128_4
+    21300010: map_character_128_5
+    21300012: map_character_128_6
+    21300014: map_character_128_7
+    21300016: map_character_128_8
+    21300018: map_character_128_9
+    21300020: map_character_128_10
+    21300022: map_character_128_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -61,7 +64,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: map_terrain_128_0
+    - name: map_character_128_0
       rect:
         serializedVersion: 2
         x: 0
@@ -71,7 +74,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_1
+    - name: map_character_128_1
       rect:
         serializedVersion: 2
         x: 128
@@ -81,7 +84,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_2
+    - name: map_character_128_2
       rect:
         serializedVersion: 2
         x: 256
@@ -91,7 +94,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_3
+    - name: map_character_128_3
       rect:
         serializedVersion: 2
         x: 0
@@ -101,7 +104,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_4
+    - name: map_character_128_4
       rect:
         serializedVersion: 2
         x: 128
@@ -111,7 +114,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_5
+    - name: map_character_128_5
       rect:
         serializedVersion: 2
         x: 256
@@ -121,7 +124,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_6
+    - name: map_character_128_6
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +134,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_7
+    - name: map_character_128_7
       rect:
         serializedVersion: 2
         x: 128
@@ -141,7 +144,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_8
+    - name: map_character_128_8
       rect:
         serializedVersion: 2
         x: 256
@@ -151,7 +154,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_9
+    - name: map_character_128_9
       rect:
         serializedVersion: 2
         x: 0
@@ -161,7 +164,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_10
+    - name: map_character_128_10
       rect:
         serializedVersion: 2
         x: 128
@@ -171,7 +174,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_terrain_128_11
+    - name: map_character_128_11
       rect:
         serializedVersion: 2
         x: 256
