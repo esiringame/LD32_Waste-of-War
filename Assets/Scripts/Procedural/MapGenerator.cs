@@ -18,18 +18,27 @@ public class MapGenerator
         for (int i = 0; i < sizeY; i++)
             map[i] = new CaseData[sizeX];
 
-        // Begin
+        // First column
 
         var sectorGenerator = new SectorGenerator {
             Height = sizeY,
-            Width = 3,
-            NumberByType =
-                {
-                    {CaseData.Obstacle, ObstaclesNumberBySector}
-                }
+            Width = 1
         };
 
         sectorGenerator.GenerateSector(map, 0, 0);
+
+        // Begin
+
+        sectorGenerator = new SectorGenerator {
+            Height = sizeY,
+            Width = 2,
+            NumberByType =
+                {
+                    {CaseData.Obstacle, 2 * ObstaclesNumberBySector / 5}
+                }
+        };
+
+        sectorGenerator.GenerateSector(map, 1, 0);
 
         // Center
 
