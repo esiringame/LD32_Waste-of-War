@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RedMinesBehaviour : CaseBehaviour {
+public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
 
     public AudioClip mineArmed;
     public AudioClip mineDisarmed;
@@ -9,7 +9,7 @@ public class RedMinesBehaviour : CaseBehaviour {
 
     private bool isArmed = true;
 
-    public override bool isObstacle
+    public override bool IsObstacle
     {
         get { return false; }
     }

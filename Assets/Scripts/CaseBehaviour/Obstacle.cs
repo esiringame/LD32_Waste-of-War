@@ -2,9 +2,9 @@
 using System.Collections;
 using System;
 
-public class Obstacle : CaseBehaviour {
+public class Obstacle : CaseBehaviour<Obstacle> {
 
-    public override bool isObstacle
+    public override bool IsObstacle
     {
         get { return true; }
     }

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float pressedTimeElapsed;
     private const float PressedTimePeriod = 0.2f;
 
-    public CaseBehaviour currentCase { get; private set; }
+    public ICaseBehaviour currentCase { get; private set; }
     public AudioClip dead, trash_dead, water;
 
     void Start()

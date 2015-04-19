@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using DesignPattern;
 
-public class GreenMinesBehaviour : CaseBehaviour {
-
+public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
+{
     public AudioClip boom;
     public AudioClip mineArmed;
 
-    public override bool isObstacle
+    public override bool IsObstacle
     {
         get { return false; }
     }
@@ -32,17 +32,17 @@ public class GreenMinesBehaviour : CaseBehaviour {
     }
 
     //Genère les cases adjacentes à la mine verte
-    private List<CaseBehaviour> casesAdjacentes()
+    private List<ICaseBehaviour> casesAdjacentes()
     {
-        List<CaseBehaviour> adjacents = new System.Collections.Generic.List<CaseBehaviour>();
+        List<ICaseBehaviour> adjacents = new List<ICaseBehaviour>();
         for (int i = -1; i < 2; i++)
         {
             for (int j = -1; j < 2; j++)
             {
                 // Condition aux bords
-                if (positionX + i < 10 && positionY + j < 30 && positionX + i > 0 && positionY + j > 0)
+                if (PositionX + i < 10 && PositionY + j < 30 && PositionX + i > 0 && PositionY + j > 0)
                 {
-                    CaseBehaviour CurrentCase = Grid.Instance.grid[j][i];
+                    ICaseBehaviour CurrentCase = Grid.Instance.grid[j][i];
                     // On ne prend pas en compte les mines et obstacles
                     if (CurrentCase is EmptyCaseBehaviour)
                     {
@@ -56,30 +56,30 @@ public class GreenMinesBehaviour : CaseBehaviour {
 
     public void fragmentation()
     {
-        List<CaseBehaviour> adjacents = casesAdjacentes();
+        List<ICaseBehaviour> adjacents = casesAdjacentes();
    
         for (int i = 0; i < 3 && adjacents.Count >0; i++)
         {
             // Choisit aléatoirement une des cases adjacentes
             
-            CaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
-            int x= randomCase.positionX;
-            int y= randomCase.positionY;
+            ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count-1)];
+            int x= randomCase.PositionX;
+            int y= randomCase.PositionY;
             // On la supprime de la liste pour ne pas retomber dessus
             adjacents.Remove(randomCase);
 
             // Fragmentation d'une mine verte ou range
             if (Random.value > 0.5f)
             {
-                Grid.Instance.grid[y][x] = Factory<CaseBehaviour>.New("Case/RedMines");
+                Grid.Instance.grid[y][x] = Factory<RedMinesBehaviour>.New("Case/RedMines");
             }
 
             else
             {
-                Grid.Instance.grid[y][x] = Factory<CaseBehaviour>.New("Case/GreenMines");
+                Grid.Instance.grid[y][x] = Factory<GreenMinesBehaviour>.New("Case/GreenMines");
             }
         }
         // Transforme cette case en case vide
-        Grid.Instance.grid[positionY][positionX] = Factory<CaseBehaviour>.New("Case/EmptyCase"); 
+        Grid.Instance.grid[PositionY][PositionX] = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase"); 
     }
 }

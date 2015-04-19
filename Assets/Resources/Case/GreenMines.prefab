@@ -37,9 +37,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 138532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724a3a83b81d3494da2968bef6400c28, type: 3}
+  m_Script: {fileID: 11500000, guid: d3f789fb35241ab4cadb20eae6e4ae62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boom: {fileID: 0}
+  mineArmed: {fileID: 0}
 --- !u!212 &21286564
 SpriteRenderer:
   m_ObjectHideFlags: 1
