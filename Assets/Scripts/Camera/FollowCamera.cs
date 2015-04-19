@@ -9,7 +9,7 @@ public class FollowCamera : MonoBehaviour {
 	private int width;
 
 	void Start () {
-		transform.position = new Vector3(player.transform.position.x, 4.5f, transform.position.z);
+		transform.position = new Vector3(player.transform.position.x, 5.5f, transform.position.z);
 	}
 
 	void Update () {
@@ -17,6 +17,6 @@ public class FollowCamera : MonoBehaviour {
 		width = Grid.Instance.Width;
 
 		if (player.transform.position.x > 5 && player.transform.position.x < width - 5)
-			transform.position = new Vector3(player.transform.position.x, 4.5f, transform.position.z);
+			transform.position = new Vector3(player.transform.position.x, 5.5f, transform.position.z);
 	}
 }
