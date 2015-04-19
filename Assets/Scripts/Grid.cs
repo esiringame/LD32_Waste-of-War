@@ -43,22 +43,27 @@ public class Grid : DesignPattern.Singleton<Grid>
                     {
                         case CaseData.RedMines:
                             grid[y][x] = Factory<CaseBehaviour>.New("Case/RedMines");
+                            grid[y][x].setPosition(x, y);
                             grid[y][x].transform.position = new Vector3(x, y, 0);
                             break;
                         case CaseData.GreenMines:
                             grid[y][x] = Factory<CaseBehaviour>.New("Case/GreenMines");
+                            grid[y][x].setPosition(x, y);
                             grid[y][x].transform.position = new Vector3(x, y, 0);
                             break;
                         case CaseData.Obstacle:
                             grid[y][x] = Factory<CaseBehaviour>.New("Case/Obstacle");
+                            grid[y][x].setPosition(x, y);
                             grid[y][x].transform.position = new Vector3(x, y, 0);
                             break;
                         case CaseData.Stone:
                             grid[y][x] = Factory<CaseBehaviour>.New("Case/Stone");
+                            grid[y][x].setPosition(x, y);
                             grid[y][x].transform.position = new Vector3(x, y, 0);
                             break;
                         default:
                             grid[y][x] = Factory<CaseBehaviour>.New("Case/EmptyCase");
+                            grid[y][x].setPosition(x, y);
                             grid[y][x].transform.position = new Vector3(x, y, 0);
                             break;
                     }
