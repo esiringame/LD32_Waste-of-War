@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419710}
   - 114: {fileID: 11496446}
+  - 114: {fileID: 11415876}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -28,6 +29,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11415876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf32812c83f0cea4d8d1bdd0d0db9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sand:
+  - {fileID: 21300006, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  - {fileID: 21300008, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  - {fileID: 21300010, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  Stone: {fileID: 21300016, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  Tree: {fileID: 21300014, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  Well: {fileID: 21300012, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  RedMine: {fileID: 21300020, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  GreenMine: {fileID: 21300018, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
 --- !u!114 &11496446
 MonoBehaviour:
   m_ObjectHideFlags: 1

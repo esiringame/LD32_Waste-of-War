@@ -25,20 +25,20 @@ public class Grid : DesignPattern.Singleton<Grid>
                 {
                     CaseData currentCase = dataGrid[y][x];
                     ICaseBehaviour caseBehaviour;
-
+                    
                     switch (currentCase)
                     {
                         case CaseData.RedMines:
-                            caseBehaviour = Factory<RedMinesBehaviour>.New("Case/RedMines");
+                            caseBehaviour = Factory<RedMinesBehaviour>.New("Case/RedMine");
                             break;
                         case CaseData.GreenMines:
-                            caseBehaviour = Factory<GreenMinesBehaviour>.New("Case/GreenMines");
+                            caseBehaviour = Factory<GreenMinesBehaviour>.New("Case/GreenMine");
                             break;
                         case CaseData.Obstacle:
                             caseBehaviour = Factory<Obstacle>.New("Case/Obstacle");
                             break;
                         case CaseData.Stone:
-                            caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/Stone");
+                            caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase");
                             caseBehaviour.HasStone = true;
 							break;
 						case CaseData.Start:
@@ -51,7 +51,7 @@ public class Grid : DesignPattern.Singleton<Grid>
                             caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase");
                             break;
                     }
-
+                    
                     caseBehaviour.SetPosition(x, y);
                     ((MonoBehaviour)caseBehaviour).transform.parent = transform;
                     ((MonoBehaviour)caseBehaviour).transform.position = new Vector3(x, y, 0);

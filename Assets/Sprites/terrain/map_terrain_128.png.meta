@@ -1,13 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 4cb0e1bf709d0524bbb96c7ec4ce2952
-timeCreated: 1429472889
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
-guid: 71de5a49f56f0504a819d30219b2abe4
-timeCreated: 1429479962
+timeCreated: 1429482482
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -23,7 +16,6 @@ TextureImporter:
     21300018: map_terrain_128_9
     21300020: map_terrain_128_10
     21300022: map_terrain_128_11
->>>>>>> 9de266c33898289e43a8f3ba2de66c61e87d3a5a
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,22 +42,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-<<<<<<< HEAD
-    aniso: -1
-=======
     aniso: 16
->>>>>>> 9de266c33898289e43a8f3ba2de66c61e87d3a5a
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> 9de266c33898289e43a8f3ba2de66c61e87d3a5a
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -76,9 +60,6 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-<<<<<<< HEAD
-    sprites: []
-=======
     sprites:
     - name: map_terrain_128_0
       rect:
@@ -200,7 +181,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> 9de266c33898289e43a8f3ba2de66c61e87d3a5a
   spritePackingTag: 
   userData: 
   assetBundleName: 

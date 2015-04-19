@@ -2,8 +2,6 @@
 
 public interface ICaseBehaviour
 {
-    GameObject GameObject { get; }
-
     int PositionX { get; }
     int PositionY { get; }
     bool HasStone { get; set; }
