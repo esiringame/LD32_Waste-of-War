@@ -4,7 +4,7 @@ using DesignPattern;
 
 public class ScoreManager : Singleton<ScoreManager> {
 
-	public List<Score> Table{ get; set; };
+	public List<Score> Table{ get; set; }
 
 	void Start () {
 		Table = new List<Score> ();

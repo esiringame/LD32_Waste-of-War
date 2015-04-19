@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/CharaDesign/playerAnimator/Camera/FollowCamera.cs.meta
 guid: 6cb54d15056e0164b880b4bf50483607
 timeCreated: 1429390227
+=======
+guid: 62d5d036fcc3d2e4f8d9fe455d5d3990
+timeCreated: 1429467463
+>>>>>>> 05d70b2d42f3b0627f31038a2102a93509f102da:Assets/Scripts/CaseBehaviour/StartCaseBehaviour.cs.meta
 licenseType: Free
 MonoImporter:
   serializedVersion: 2

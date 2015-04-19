@@ -22,7 +22,11 @@ public class MapGenerator
 
         var sectorGenerator = new SectorGenerator {
             Height = sizeY,
-            Width = 1
+            Width = 1,
+			NumberByType = 
+			{
+				{CaseData.Start, sizeY}
+			}
         };
 
         sectorGenerator.GenerateSector(map, 0, 0);
@@ -70,6 +74,8 @@ public class MapGenerator
         };
 
         sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 1) * SectorWidth, 0);
+
+		map [sizeY / 2] [sizeX - 1] = CaseData.Well;
 
         return map;
     }
