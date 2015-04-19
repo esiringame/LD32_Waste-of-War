@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PauseGameState : GameState
 {
-    public PauseGameState(GameManagerBis gameManager)
+    public PauseGameState(GameManager gameManager)
         : base(gameManager)
     {
     }

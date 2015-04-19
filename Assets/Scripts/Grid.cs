@@ -40,7 +40,13 @@ public class Grid : DesignPattern.Singleton<Grid>
                         case CaseData.Stone:
                             caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/Stone");
                             caseBehaviour.HasStone = true;
-                            break;
+							break;
+						case CaseData.Start:
+							caseBehaviour = Factory<StartCaseBehaviour>.New("Case/Start");
+							break;
+						case CaseData.Well:
+							caseBehaviour = Factory<WellCaseBehaviour>.New("Case/Well");
+							break;
                         default:
                             caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase");
                             break;

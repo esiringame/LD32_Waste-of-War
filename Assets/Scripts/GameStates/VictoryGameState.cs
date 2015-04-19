@@ -3,7 +3,7 @@ using System.Collections;
 
 public class VictoryGameState : GameState
 {
-    public VictoryGameState(GameManagerBis gameManager)
+    public VictoryGameState(GameManager gameManager)
         : base(gameManager)
     {
     }
