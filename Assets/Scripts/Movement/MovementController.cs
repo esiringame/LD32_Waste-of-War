@@ -1,24 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-public class MovementController : MonoBehaviour {
-	public float PosX=1;
-	public float PosY=1;
-	public float PosZ=1;
-	private Vector3 east = Vector3.right;
-	private Vector3 north = Vector3.up;
-	private Vector3 west = Vector3.left;
-	private Vector3 south = Vector3.down;
-	public Vector3 Direction;
-	public float TimeKeyPressed;
-	public float NextCaseDistance =0.1f;
-=======
+
 public class MovementController : MonoBehaviour
 {
 	public Vector2 PositionCase { get; private set; }
 	public float Speed = 1;
->>>>>>> 2755b408a4ae2e950b4307f08e099c4680d463b7
 
 	private static Vector3 east = Vector3.right;
 	private static Vector3 north = Vector3.up;
