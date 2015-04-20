@@ -12,6 +12,7 @@ GameObject:
   - 136: {fileID: 13620058}
   - 23: {fileID: 2319116}
   - 114: {fileID: 11487318}
+  - 82: {fileID: 8246900}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -193,6 +194,75 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140158}
   m_Enabled: 1
+--- !u!82 &8246900
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124292}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!92 &9226900
 Behaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Height: 10
   Width: 30
-  StartCase: {x: 0, y: 0}
 --- !u!114 &11484192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,9 +332,9 @@ MonoBehaviour:
   MoveSpeed: 3
   Lifes: 0
   Rocks: 0
-  dead: {fileID: 0}
-  trash_dead: {fileID: 0}
-  water: {fileID: 0}
+  dead: {fileID: 8300000, guid: 94593aa86cf62f747864f443f650e23c, type: 3}
+  trash_dead: {fileID: 8300000, guid: f4638dd1020aab54d9a423076969018f, type: 3}
+  water: {fileID: 8300000, guid: 1f54efcb648cdb045a00aff2452cbfc9, type: 3}
 --- !u!114 &11491262
 MonoBehaviour:
   m_ObjectHideFlags: 1

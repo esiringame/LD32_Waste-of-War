@@ -76,10 +76,13 @@ MonoBehaviour:
   LifesAtStartup: 5
   RocksAtStartup: 1
   IsBucketFilled: 0
+  ControlEnabled: 1
   MoveSpeed: 1
-  dead: {fileID: 0}
-  trash_dead: {fileID: 0}
-  water: {fileID: 0}
+  Lifes: 0
+  Rocks: 0
+  dead: {fileID: 8300000, guid: 94593aa86cf62f747864f443f650e23c, type: 3}
+  trash_dead: {fileID: 8300000, guid: f4638dd1020aab54d9a423076969018f, type: 3}
+  water: {fileID: 8300000, guid: e571ebd511def3e418bd8c82a1573e77, type: 3}
 --- !u!136 &13658410
 CapsuleCollider:
   m_ObjectHideFlags: 1
