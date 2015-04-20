@@ -15,6 +15,7 @@ public class PlayerControlToSuppress : MonoBehaviour {
 	const int STATE_WALK_B = 13;
 	const int STATE_IDLE_T = 2;
 	const int STATE_WALK_T = 12;
+	const int STATE_DIE = 20;
 	
 	string currentDirection = "right";
 	int _currentAnimationState = STATE_IDLE_L;
@@ -78,6 +79,9 @@ public class PlayerControlToSuppress : MonoBehaviour {
 				
 			}
 			
+		}else if (Input.GetKey ("space") )
+		{
+				changeState(STATE_DIE);
 		}
 		else
 		{
@@ -136,7 +140,10 @@ public class PlayerControlToSuppress : MonoBehaviour {
 		case STATE_IDLE_B:
 			animator.SetInteger ("state", STATE_IDLE_B);
 			break;
-			
+
+		case STATE_DIE:
+			animator.SetInteger ("state", STATE_DIE);
+			break;
 		}
 
 		_currentAnimationState = state;
