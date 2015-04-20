@@ -8,19 +8,31 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public AudioClip mineArmed;
     private float timer;
     PlayerController m_player = null;
+	private float timerVisible = 10;
 
     void Update()
-    {
-        if (m_player != null)
+	{
+		if(timerVisible <= 3)
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = true;
+			timerVisible += Time.unscaledDeltaTime;
+		}
+		else
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = false;
+		}
+
+		if (m_player != null)
         {
             timer += Time.unscaledDeltaTime;
         }
-        if (timer > 3.0f)
+        if (timer > 2.0f)
         {
             Fragmentation();
             if (m_player != null)
             {
-                m_player.Die();
+				setMineVisible(true);
+				m_player.Die();
             }
         }
     }
@@ -44,7 +56,10 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         m_player = null;
 
         if (!player.IsJumping)
-            player.Die();
+		{
+			setMineVisible(true);
+			player.Die ();
+		}
     }
 
     public override void PutStone(PlayerController player)
@@ -64,8 +79,8 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             // Choisit aléatoirement une des cases adjacentes
             
             ICaseBehaviour randomCase = adjacents[Random.Range(0,adjacents.Count)];
-            int x= randomCase.PositionX;
-            int y= randomCase.PositionY;
+            int x = randomCase.PositionX;
+            int y = randomCase.PositionY;
             // On la supprime de la liste pour ne pas retomber dessus
             adjacents.Remove(randomCase);
 
@@ -73,14 +88,17 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             if (Random.value > 0.5f)
             {
                 Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<RedMinesBehaviour>();
+				(Grid.Instance.grid[y][x] as RedMinesBehaviour).setMineVisible(true);
             }
             else
             {
-                Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<GreenMinesBehaviour>();
-            }
-        }
+				Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<GreenMinesBehaviour>();
+				(Grid.Instance.grid[y][x] as GreenMinesBehaviour).setMineVisible(true);
+			}
+		}
         // Transforme cette case en case vide
         Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
+		(Grid.Instance.grid [PositionY] [PositionX] as EmptyCaseBehaviour).AddRemanantMine (TilesetGallery.Instance.GreenMine);
     }
 
     //Genère les cases adjacentes à la mine verte
@@ -107,5 +125,16 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             }
         }
         return adjacents;
-    }
+	}
+	
+	public void setMineVisible(bool visible)
+	{
+		timerVisible = visible ? 0 : 10;
+	}
+	
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawSphere (transform.position, 0.5f);
+	}
 }
