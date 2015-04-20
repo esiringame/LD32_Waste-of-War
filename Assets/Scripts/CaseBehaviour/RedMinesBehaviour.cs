@@ -5,12 +5,26 @@ public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
 
     public AudioClip mineArmed;
     public AudioClip mineDisarmed;
-    public AudioClip boom;
-
+	public AudioClip boom;
+	private float timerVisible = 0;
+	
     public override bool IsObstacle
     {
         get { return false; }
     }
+
+	void Update()
+	{
+		if(timerVisible <= 3)
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = true;
+			timerVisible += Time.unscaledDeltaTime;
+		}
+		else
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = false;
+		}
+	}
 
     public override void OnEnter(PlayerController player)
     {
@@ -48,6 +62,18 @@ public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
     {
         player.Die();
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
-        Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
-    }
+		Grid.Instance.grid[PositionY][PositionX] = Grid.Instance.grid[PositionY][PositionX].ChangeBehaviour<EmptyCaseBehaviour>();
+		(Grid.Instance.grid [PositionY] [PositionX] as EmptyCaseBehaviour).AddRemanantMine (TilesetGallery.Instance.RedMine);
+	}
+	
+	public void setMineVisible(bool visible)
+	{
+		timerVisible = visible ? 0 : 10;
+	}
+	
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawSphere (transform.position, 0.5f);
+	}
 }

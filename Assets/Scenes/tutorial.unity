@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Color: {r: .164705887, g: .164705887, b: .164705887, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -129,7 +129,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "Synopsis:\r\r\nIn a small village located in the desert, children are sent
+    to collect water from a distant well. However, former wars left a merciless minefield
+    in between.\r\n\r\nLead their steps through the minefield and bring the precious
+    liquid to your thirsty people.\r\n\r\nControls:\r\r\nArrow keys: move\r\nSpacebar:
+    jump\r\nLeft-click: throw a stone or leave it at your foot\r\n\r\nMines:\r\nRed
+    mine explodes when you leave it. Remember to put a stone on it. \r\nGreen mine
+    explodes briefly after you walk on it. Jump quickly."
 --- !u!222 &105532449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -150,8 +156,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -187, y: -35}
-  m_SizeDelta: {x: 295, y: 336}
+  m_AnchoredPosition: {x: -170, y: -2}
+  m_SizeDelta: {x: 434, y: 322}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &277157502
 GameObject:
@@ -211,7 +217,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 137, y: -70}
+  m_AnchoredPosition: {x: 119, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &464763074
@@ -311,7 +317,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 133, y: 7}
+  m_AnchoredPosition: {x: 325, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &586112354
@@ -710,7 +716,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 136, y: -118}
+  m_AnchoredPosition: {x: 258, y: -113}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1625186688
@@ -844,7 +850,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 164, y: 111}
+  m_AnchoredPosition: {x: 190, y: 73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1995143857
@@ -933,7 +939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mines Things
+  m_Text: Tutorial
 --- !u!222 &2006623376
 CanvasRenderer:
   m_ObjectHideFlags: 0

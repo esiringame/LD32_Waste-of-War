@@ -33,11 +33,13 @@ public class Grid : DesignPattern.Singleton<Grid>
                     {
                         case CaseData.RedMines:
                             caseBehaviour = Factory<RedMinesBehaviour>.New("Case/RedMine");
+							(caseBehaviour as RedMinesBehaviour).setMineVisible(false);
                             break;
                         case CaseData.GreenMines:
-                            caseBehaviour = Factory<GreenMinesBehaviour>.New("Case/GreenMine");
-                            break;
-                        case CaseData.Obstacle:
+							caseBehaviour = Factory<GreenMinesBehaviour>.New("Case/GreenMine");
+							(caseBehaviour as GreenMinesBehaviour).setMineVisible(false);
+							break;
+						case CaseData.Obstacle:
                             caseBehaviour = Factory<Obstacle>.New("Case/Obstacle");
                             break;
                         case CaseData.Stone:

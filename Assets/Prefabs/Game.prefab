@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 498120}
@@ -302,6 +302,7 @@ MonoBehaviour:
   MoveSpeed: 1
   Lifes: 0
   Rocks: 0
+  waitActive: 0
   dead: {fileID: 8300000, guid: 94593aa86cf62f747864f443f650e23c, type: 3}
   trash_dead: {fileID: 8300000, guid: f4638dd1020aab54d9a423076969018f, type: 3}
   water: {fileID: 8300000, guid: e571ebd511def3e418bd8c82a1573e77, type: 3}

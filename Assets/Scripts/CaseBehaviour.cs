@@ -64,7 +64,7 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
         return newBehaviour;
     }
 
-    protected void RefreshObjectSprite()
+    protected virtual void RefreshObjectSprite()
     {
         if (HasStone)
             Object.GetComponentInChildren<SpriteRenderer>().sprite = TilesetGallery.Instance.Stone;
