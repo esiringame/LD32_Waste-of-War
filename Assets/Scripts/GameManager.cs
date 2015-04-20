@@ -9,6 +9,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
 
     public TimeSpan Chronometer
     {
+
         get { return TimeSpan.FromSeconds(_chronometer); }
     }
 

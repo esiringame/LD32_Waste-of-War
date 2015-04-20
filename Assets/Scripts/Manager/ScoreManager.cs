@@ -26,7 +26,7 @@ public class ScoreManager : Singleton<ScoreManager> {
 		print (nbScore);
 		for (int i = 0; i < nbScore; i++) {
 			PlayerPrefs.SetString("Name"+i, Table[i].name.ToString());
-			PlayerPrefs.SetInt("Score"+i, (int)Table[i].score.Ticks); 
+			PlayerPrefs.SetInt("Score"+i, (int)Table[i].score.Seconds); 
 		}
 	}
 
@@ -35,7 +35,7 @@ public class ScoreManager : Singleton<ScoreManager> {
 		print (nbScore);
 		for (int i = 0; i < nbScore; i++) {
 			Table[i].name = PlayerPrefs.GetString("Name"+i);
-			Table[i].score = TimeSpan.FromTicks(PlayerPrefs.GetInt("Score"+i)); 
+			Table[i].score = TimeSpan.FromSeconds(PlayerPrefs.GetInt("Score"+i)); 
 		}
 	}
 }

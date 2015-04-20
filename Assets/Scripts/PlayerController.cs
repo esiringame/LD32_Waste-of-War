@@ -62,10 +62,7 @@ public class PlayerController : MonoBehaviour
         get { return Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x]; }
     }
 
-    public bool IsMoving
-    {
-        get { return transform.position != Destination; }
-    }
+	public bool IsMoving { get; private set; }
 
     public AudioClip dead, trash_dead, water;
 
@@ -136,7 +133,8 @@ public class PlayerController : MonoBehaviour
 				
 			}
 		}
-        if (transform.position != Destination) {
+
+		if (IsMoving) {
 			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
 				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
@@ -150,28 +148,17 @@ public class PlayerController : MonoBehaviour
 
 
 				}
-				
 			} else {
-
-				transform.position = Destination;
-                PositionCase += new Vector2(Direction.x, Direction.y) * (IsJumping ? 2 : 1);
-				CurrentCase.OnEnter (this);
-
-				alreadyLeaveCase = false;
-			    IsJumping = false;
+					
+					transform.position = Destination;
+					PositionCase += new Vector2 (Direction.x, Direction.y) * (IsJumping ? 2 : 1);
+					CurrentCase.OnEnter (this);
+					
+					alreadyLeaveCase = false;
+					IsJumping = false;
+					IsMoving = false;
+				}
 			}
-		} else
-		{
-			if(Direction == East){
-				changeState(STATE_IDLE_R);
-			}else if(Direction == West){
-				changeState(STATE_IDLE_L);
-			}else if(Direction == North){
-				changeState(STATE_IDLE_T);
-			}else if(Direction == South){
-				changeState(STATE_IDLE_B);
-			}
-		}
     }
 
     void HandleInput()
@@ -206,6 +193,7 @@ public class PlayerController : MonoBehaviour
                     if (!CheckObstacle(newDirection))
                     {
                         Destination += Direction * CaseSize;
+						IsMoving = true;
                     }
                 }
             }
@@ -262,6 +250,7 @@ public class PlayerController : MonoBehaviour
         {
             Destination += jump * CaseSize;
             IsJumping = true;
+			IsMoving = true;
         }
     }
     public void PutStone()
