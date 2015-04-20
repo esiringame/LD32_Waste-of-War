@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class VictoryGameState : GameState
 {
@@ -15,6 +16,10 @@ public class VictoryGameState : GameState
 
     public override void Update()
     {
-        Application.LoadLevel((int)SceneId.HighScore);
+		GameObject.Find ("Score").SendMessage("setScore", GameManager.Instance.Chronometer);
+
+		//GameManager.ResetChrono ();
+		//GameObject.Destroy(GameObject.Find ("GameManager"));
+        Application.LoadLevel("NameInput");
     }
 }

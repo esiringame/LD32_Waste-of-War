@@ -9,7 +9,6 @@ public class GameManager : DesignPattern.Singleton<GameManager>
 
     public TimeSpan Chronometer
     {
-
         get { return TimeSpan.FromSeconds(_chronometer); }
     }
 
@@ -29,6 +28,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
     void Start()
     {
         State.Init();
+		ResetChrono ();
     }
 
     void Update()
@@ -60,6 +60,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
     public void ResetChrono()
     {
         _chronometer = 0;
+
     }
 
     public void ChangeState(GameState newState)
