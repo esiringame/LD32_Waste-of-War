@@ -11,6 +11,8 @@ public class BeginGameState : GameState
     public override void Init()
     {
         GameManager.Pause();
+
+        GameManager.Player.Reset();
     }
 
     public override void Update()

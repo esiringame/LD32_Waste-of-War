@@ -15,6 +15,6 @@ public class IntroGameState : GameState
 
     public override void Update()
     {
-        GameManager.DifferedChangeState(new PlayGameState(GameManager.Instance));
+        GameManager.DifferedChangeState(new PlayGameState(GameManager));
     }
 }
