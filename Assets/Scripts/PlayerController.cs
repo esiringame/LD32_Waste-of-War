@@ -37,12 +37,16 @@ public class PlayerController : MonoBehaviour
 	//animation states - the values in the animator conditions
 	const int STATE_IDLE_R = 0;
 	const int STATE_WALK_R = 10;
+	const int STATE_JUMP_R = 30;
 	const int STATE_IDLE_L = 1;
 	const int STATE_WALK_L = 11;
+	const int STATE_JUMP_L = 31;
 	const int STATE_IDLE_B = 3;
 	const int STATE_WALK_B = 13;
+	const int STATE_JUMP_B = 33;
 	const int STATE_IDLE_T = 2;
 	const int STATE_WALK_T = 12;
+	const int STATE_JUMP_T = 32;
 	const int STATE_DIE = 20;
 
 	string currentDirection = "right";
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
 
-		if(IsMoving){
+		if(IsMoving && !IsJumping){
 			if (Direction == East) {
 				
 				changeState (STATE_WALK_R);
@@ -88,6 +92,24 @@ public class PlayerController : MonoBehaviour
 			} else if (Direction == South) {
 				
 				changeState (STATE_WALK_B);
+				
+			}
+		}else if(IsJumping){
+			if (Direction == East) {
+				
+				changeState (STATE_JUMP_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_JUMP_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_JUMP_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_JUMP_B);
 				
 			}
 		}else{
@@ -342,6 +364,22 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_IDLE_B:
 			animator.SetInteger ("state", STATE_IDLE_B);
+			break;
+			
+		case STATE_JUMP_B:
+			animator.SetInteger ("state", STATE_JUMP_B);
+			break;
+			
+		case STATE_JUMP_T:
+			animator.SetInteger ("state", STATE_JUMP_T);
+			break;
+			
+		case STATE_JUMP_R:
+			animator.SetInteger ("state", STATE_JUMP_R);
+			break;
+			
+		case STATE_JUMP_L:
+			animator.SetInteger ("state", STATE_JUMP_L);
 			break;
 			
 		case STATE_DIE:
