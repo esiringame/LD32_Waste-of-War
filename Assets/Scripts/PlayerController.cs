@@ -205,14 +205,14 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
 
-    void PutStone()
+    public void PutStone()
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x];
         if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
             caseBehaviour.PutStone(this);
     }
 
-    void ThrowStone(int x, int y)
+    public void ThrowStone(int x, int y)
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
         if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
