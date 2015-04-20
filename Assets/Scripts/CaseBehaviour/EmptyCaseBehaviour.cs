@@ -14,6 +14,7 @@ public class EmptyCaseBehaviour : CaseBehaviour<EmptyCaseBehaviour> {
         {
             player.AddRockToInventory();
             HasStone = false;
+            RefreshObjectSprite();
         }
     }
 }

@@ -51,14 +51,15 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
         where TBehaviour : CaseBehaviour<TBehaviour>
     {
         TBehaviour newBehaviour = gameObject.AddComponent<TBehaviour>();
-        DestroyImmediate(this);
+        newBehaviour.Object = Object;
+        Destroy(GetComponent(GetType()));
 
         RefreshObjectSprite();
 
         return newBehaviour;
     }
 
-    void RefreshObjectSprite()
+    protected void RefreshObjectSprite()
     {
         if (HasStone)
             Object.GetComponentInChildren<SpriteRenderer>().sprite = TilesetGallery.Instance.Stone;

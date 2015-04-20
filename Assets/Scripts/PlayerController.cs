@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 PositionCase { get; private set; }
     public bool IsJumping { get; private set; }
 
+    public const int MaxStones = 3;
+
     private const float CaseSize = 1;
     private static readonly Vector3 East = Vector3.right;
     private static readonly Vector3 North = Vector3.up;
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsInventoryFull()
     {
-        return Rocks >= 3;
+        return Rocks >= MaxStones;
     }
 
     public bool IsInventoryEmpty()
