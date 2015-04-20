@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
                 if (pressedTimeElapsed >= PressedTimePeriod)
                 {
-                    Vector2 misDirection = new Vector2((int)(PositionCase.x + newDirection.x), (int)(PositionCase.y + newDirection.y));
+                    Vector2 misDirection = new Vector2(PositionCase.x + newDirection.x, PositionCase.y + newDirection.y);
                     bool isObstacle = false;
                     if (misDirection.y >= 0 && misDirection.x >= 0 && misDirection.x < Grid.Instance.Width && misDirection.y < Grid.Instance.Height)
                     {
