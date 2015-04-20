@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
-using System;
 
-public class Obstacle : CaseBehaviour<Obstacle> {
-
+public class BorderCaseBehaviour : CaseBehaviour<BorderCaseBehaviour>
+{
     public override bool IsObstacle
     {
         get { return true; }

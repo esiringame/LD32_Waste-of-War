@@ -6,14 +6,21 @@ using Random = UnityEngine.Random;
 public class TilesetGallery : Singleton<TilesetGallery>
 {
     public Sprite[] Sand;
+    public Sprite[] Border;
+    public Sprite Entry;
     public Sprite Stone;
     public Sprite Tree;
     public Sprite Well;
     public Sprite RedMine;
     public Sprite GreenMine;
 
-    public Sprite GetBackground()
+    public Sprite GetBackground(Type type)
     {
+        if (type == typeof(BorderCaseBehaviour))
+            return Border[Random.Range(0, 3)];
+        if (type == typeof(StartCaseBehaviour))
+            return Entry;
+        
         return Sand[Random.Range(0, 3)];
     }
 

@@ -6,6 +6,7 @@ public interface ICaseBehaviour
     int PositionY { get; }
     bool HasStone { get; set; }
     bool IsObstacle { get; }
+    Quaternion Rotation { set; }
 
     void OnEnter(PlayerController player);
     void OnLeave(PlayerController player);

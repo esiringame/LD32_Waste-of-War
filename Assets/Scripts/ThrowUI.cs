@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using DesignPattern;
 
-public class ThrowUI : DesignPattern.Singleton<Grid> {
+public class ThrowUI : DesignPattern.Singleton<ThrowUI>
+{
 
 	// Attributes
 	public GameObject player;
@@ -56,7 +57,7 @@ public class ThrowUI : DesignPattern.Singleton<Grid> {
 	void fillCase(int i, int j)
 	{
 		CaseUIBehaviour currentCase;
-		if(Grid.Instance.grid[i][j].IsObstacle)
+		if(Grid.Instance.grid[i][j] == null || Grid.Instance.grid[i][j].IsObstacle)
 		{
 			currentCase = Factory<CaseUIBehaviour>.New("Case/CaseHighlightedNotValid");
 		}

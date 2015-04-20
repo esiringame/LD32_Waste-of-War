@@ -19,20 +19,20 @@ public class MapGenerator
         // Begin
 
         var sectorGenerator = new SectorGenerator {
-            Height = sizeY,
-            Width = 2,
+            Height = sizeY - 2,
+            Width = 1,
             NumberByType =
                 {
                     {CaseData.Obstacle, 2 * ObstaclesNumberBySector / 5}
                 }
         };
 
-        sectorGenerator.GenerateSector(map, 1, 0);
+        sectorGenerator.GenerateSector(map, 2, 1);
 
         // Center
 
         sectorGenerator = new SectorGenerator {
-            Height = sizeY,
+            Height = sizeY - 2,
             Width = SectorWidth,
             NumberByType =
                 {
@@ -48,17 +48,17 @@ public class MapGenerator
 
             sectorGenerator.NumberByType[CaseData.RedMines] = redMinesNumber;
             sectorGenerator.NumberByType[CaseData.GreenMines] = MinesNumberBySector - redMinesNumber;
-            sectorGenerator.GenerateSector(map, 3 + i * SectorWidth, 0);
+            sectorGenerator.GenerateSector(map, 3 + i * SectorWidth, 1);
         }
 
         // End
 
         sectorGenerator = new SectorGenerator {
-            Height = sizeY,
+            Height = sizeY - 2,
             Width = 2
         };
 
-        sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 1) * SectorWidth, 0);
+        sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 2) * SectorWidth, 1);
 
         return map;
     }
@@ -69,12 +69,21 @@ public class MapGenerator
         for (int i = 0; i < sizeY; i++)
             map[i] = new CaseData[sizeX];
 
-        // Start
+        // Borders
         for (int i = 0; i < sizeY; i++)
-            map[i][0] = CaseData.Start;
+            map[i][0] = CaseData.BorderLeft;
+        for (int i = 0; i < sizeY; i++)
+            map[i][sizeX - 1] = CaseData.BorderRight;
+        for (int i = 0; i < sizeX; i++)
+            map[0][i] = CaseData.BorderBottom;
+        for (int i = 0; i < sizeX; i++)
+            map[sizeY - 1][i] = CaseData.BorderTop;
+
+        // Start
+        map[sizeY / 2][0] = CaseData.Start;
 
         // Well
-        map[sizeY / 2][sizeX - 1] = CaseData.Well;
+        map[sizeY / 2][sizeX - 2] = CaseData.Well;
 
         return map;
     }
