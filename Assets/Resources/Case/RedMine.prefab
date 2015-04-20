@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 125498}
-  mineArmed: {fileID: 0}
-  mineDisarmed: {fileID: 0}
-  boom: {fileID: 0}
+  mineArmed: {fileID: 8300000, guid: 4fab7cfc8e72b9748a8686149f5d387d, type: 3}
+  mineDisarmed: {fileID: 8300000, guid: 057fe4c122e87cc4a832b01e65295fd3, type: 3}
+  boom: {fileID: 8300000, guid: 2fb8db12c481c7740892eabf9522844b, type: 3}
 --- !u!212 &21222272
 SpriteRenderer:
   m_ObjectHideFlags: 1
