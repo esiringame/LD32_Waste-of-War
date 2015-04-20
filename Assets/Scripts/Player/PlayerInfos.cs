@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class PlayerInfos : MonoBehaviour {
+public class PlayerInfos : DesignPattern.Singleton<PlayerInfos> {
 
 	public string PlayerName { get; private set; }
 
@@ -37,5 +37,14 @@ public class PlayerInfos : MonoBehaviour {
 		Application.LoadLevel ("HighScore");
 	}
 
+	public string getPlayerName()
+	{
+		return this.PlayerName;
+	}
+	/*
+	public TimeSpan getChrono()
+	{
+		return this.PlayerName;
+	}*/
 }
 
