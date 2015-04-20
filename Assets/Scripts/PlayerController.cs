@@ -33,6 +33,21 @@ public class PlayerController : MonoBehaviour
 
     private bool alreadyLeaveCase;
 
+	Animator animator;
+	//animation states - the values in the animator conditions
+	const int STATE_IDLE_R = 0;
+	const int STATE_WALK_R = 10;
+	const int STATE_IDLE_L = 1;
+	const int STATE_WALK_L = 11;
+	const int STATE_IDLE_B = 3;
+	const int STATE_WALK_B = 13;
+	const int STATE_IDLE_T = 2;
+	const int STATE_WALK_T = 12;
+	const int STATE_DIE = 20;
+
+	string currentDirection = "right";
+	int _currentAnimationState = STATE_IDLE_L;
+
     public ICaseBehaviour CurrentCase
     {
         get { return Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x]; }
@@ -46,7 +61,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip dead, trash_dead, water;
 
     void Start()
-    {
+	{
+		//define the animator attached to the player
+		animator = this.GetComponent<Animator>();
         Lifes = LifesAtStartup;
         Reset();
     }
@@ -55,28 +72,43 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
        
-        if (transform.position != Destination)
-        {
-            if (Vector3.Dot(Direction, Destination - transform.position) > 0)
-            {
-                transform.position += Direction * MoveSpeed * Time.deltaTime;
+        if (transform.position != Destination) {
+			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
+				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
-                Vector3 lastPosition = new Vector3(PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
-                if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3)
-                {
-                    CurrentCase.OnLeave(this);
-                    alreadyLeaveCase = true;
-                }
-            }
-            else
-            {
-                transform.position = Destination;
-                PositionCase += new Vector2(Direction.x, Direction.y);
-                CurrentCase.OnEnter(this);
+				if (Direction == East) {
+					changeState (STATE_WALK_R);
+				} else if (Direction == West) {
+					changeState (STATE_WALK_L);
+				} else if (Direction == North) {
+					changeState (STATE_WALK_T);
+				} else if (Direction == South) {
+					changeState (STATE_WALK_B);
+				}
+				Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
+				if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
+					CurrentCase.OnLeave (this);
+					alreadyLeaveCase = true;
+				}
+			} else {
+				transform.position = Destination;
+				PositionCase += new Vector2 (Direction.x, Direction.y);
+				CurrentCase.OnEnter (this);
 
-                alreadyLeaveCase = false;
-            }
-        }
+				alreadyLeaveCase = false;
+			}
+		} else
+		{
+			if(Direction == East){
+				changeState(STATE_IDLE_R);
+			}else if(Direction == West){
+				changeState(STATE_IDLE_L);
+			}else if(Direction == North){
+				changeState(STATE_IDLE_T);
+			}else if(Direction == South){
+				changeState(STATE_IDLE_B);
+			}
+		}
     }
 
     void HandleInput()
@@ -134,6 +166,16 @@ public class PlayerController : MonoBehaviour
 
             if (newDirection != Vector3.zero)
                 Direction = newDirection;
+			
+			if(Direction == East){
+				changeState(STATE_IDLE_R);
+			}else if(Direction == West){
+				changeState(STATE_IDLE_L);
+			}else if(Direction == North){
+				changeState(STATE_IDLE_T);
+			}else if(Direction == South){
+				changeState(STATE_IDLE_B);
+			}
         }
     }
 
@@ -218,4 +260,54 @@ public class PlayerController : MonoBehaviour
 
         --Rocks;
     }
+
+	//--------------------------------------
+	// Change the players animation state
+	//--------------------------------------
+	void changeState(int state){
+		
+		if (_currentAnimationState == state)
+			return;
+		
+		switch (state) {
+			
+		case STATE_WALK_R:
+			animator.SetInteger ("state", STATE_WALK_R);
+			break;
+			
+		case STATE_IDLE_R:
+			animator.SetInteger ("state", STATE_IDLE_R);
+			break;
+			
+		case STATE_WALK_L:
+			animator.SetInteger ("state", STATE_WALK_L);
+			break;
+			
+		case STATE_IDLE_L:
+			animator.SetInteger ("state", STATE_IDLE_L);
+			break;
+			
+		case STATE_WALK_T:
+			animator.SetInteger ("state", STATE_WALK_T);
+			break;
+			
+		case STATE_IDLE_T:
+			animator.SetInteger ("state", STATE_IDLE_T);
+			break;
+			
+		case STATE_WALK_B:
+			animator.SetInteger ("state", STATE_WALK_B);
+			break;
+			
+		case STATE_IDLE_B:
+			animator.SetInteger ("state", STATE_IDLE_B);
+			break;
+			
+		case STATE_DIE:
+			animator.SetInteger ("state", STATE_DIE);
+			break;
+		}
+		
+		_currentAnimationState = state;
+	}
 }

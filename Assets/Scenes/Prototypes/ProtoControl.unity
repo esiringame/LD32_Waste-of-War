@@ -87,6 +87,53 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1173421133 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 146550, guid: 0912cc0990b53c147933b82b85d60a42, type: 2}
+  m_PrefabInternal: {fileID: 1632625315}
+--- !u!95 &1173421134
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173421133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e59b076882797b469162b5cf69ff69d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &1173421135
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173421133}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 377940e38c47771478f0ed99b806c976, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1569772887
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Height: 10
   Width: 30
-  StartCase: {x: 0, y: 0}
 --- !u!4 &1569772889
 Transform:
   m_ObjectHideFlags: 0
@@ -168,7 +214,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3398268, guid: 0912cc0990b53c147933b82b85d60a42, type: 2}
+    - {fileID: 13658410, guid: 0912cc0990b53c147933b82b85d60a42, type: 2}
+    - {fileID: 2353130, guid: 0912cc0990b53c147933b82b85d60a42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0912cc0990b53c147933b82b85d60a42, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1993076162
