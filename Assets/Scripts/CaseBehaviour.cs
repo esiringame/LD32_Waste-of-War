@@ -32,13 +32,8 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
         }
         else
         {
-            if (!player.IsInventoryEmpty())
-            {
-                player.RemoveRockFromInventory();
-                HasStone = true;
-                RefreshObjectSprite();
-            }
-            //Mettre le Sprite du caillou
+            HasStone = true;
+            RefreshObjectSprite();
         }
     }
 

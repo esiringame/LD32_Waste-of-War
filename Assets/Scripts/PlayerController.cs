@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using DesignPattern;
 using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
@@ -256,15 +257,30 @@ public class PlayerController : MonoBehaviour
     public void PutStone()
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x];
-        if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
-            caseBehaviour.PutStone(this);
+        if (!IsInventoryEmpty () && !caseBehaviour.HasStone)
+		{
+			Rocks--;
+			caseBehaviour.PutStone (this);
+		}
     }
 
     public void ThrowStone(int x, int y)
-    {
-        ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
-        if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
-            caseBehaviour.PutStone(this);
+	{
+		ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
+		if (IsInventoryEmpty () || caseBehaviour.HasStone)
+			return;
+
+		Rocks--;
+
+		//Defining posArrival
+		Vector2 posArrival;
+		posArrival.x = x;
+		posArrival.y = y;
+
+		StoneTrajectory trajectory = Factory<StoneTrajectory>.New("Stone/StoneTrajectory");
+		trajectory.player = this;
+		trajectory.posDeparture = this.PositionCase;
+		trajectory.posArrival = posArrival;
     }
 
     bool CheckObstacle(Vector2 newDirection)
@@ -314,14 +330,6 @@ public class PlayerController : MonoBehaviour
             throw new InvalidOperationException("Can't add a stone to full inventory ! Check inventory status before.");
 
         ++Rocks;
-    }
-
-    public void RemoveRockFromInventory()
-    {
-        if (IsInventoryEmpty())
-            throw new InvalidOperationException("Can't remove a stone from empty inventory ! Check inventory status before.");
-
-        --Rocks;
     }
 
 	//--------------------------------------
