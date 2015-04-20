@@ -1,69 +1,62 @@
 fileFormatVersion: 2
-guid: 0372fc6b8943f644b821e39012308e2f
-timeCreated: 1429531515
+guid: f13d03ccb788c9b499a1b0a18314e3a9
+timeCreated: 1429532190
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: test_map_death_32_0
-    21300002: test_map_death_32_1
-    21300004: test_map_death_32_2
-    21300006: test_map_death_32_3
-    21300008: test_map_death_32_4
-    21300010: test_map_death_32_5
-    21300012: test_map_death_32_6
-    21300014: test_map_death_32_7
-    21300016: test_map_death_32_8
-    21300018: test_map_death_32_9
-    21300020: test_map_death_32_10
-    21300022: test_map_death_32_11
-    21300024: test_map_death_32_12
-    21300026: test_map_death_32_13
-    21300028: test_map_death_32_14
-    21300030: test_map_death_32_15
-    21300032: test_map_death_32_16
-    21300034: test_map_death_32_17
-    21300036: test_map_death_32_18
-    21300038: test_map_death_32_19
-    21300040: test_map_death_32_20
-    21300042: test_map_death_32_21
-    21300044: test_map_death_32_22
-    21300046: test_map_death_32_23
-    21300048: test_map_death_32_24
-    21300050: test_map_death_32_25
-    21300052: test_map_death_32_26
-    21300054: test_map_death_32_27
-    21300056: test_map_death_32_28
-    21300058: test_map_death_32_29
-    21300060: test_map_death_32_30
-    21300062: test_map_death_32_31
-    21300064: test_map_death_32_32
-    21300066: test_map_death_32_33
-    21300068: test_map_death_32_34
-    21300070: test_map_death_32_35
-    21300072: test_map_death_32_36
-    21300074: test_map_death_32_37
-    21300076: test_map_death_32_38
-    21300078: test_map_death_32_39
-    21300080: test_map_death_32_40
-    21300082: test_map_death_32_41
-    21300084: test_map_death_32_42
-    21300086: test_map_death_32_43
-    21300088: test_map_death_32_44
-    21300090: test_map_death_32_45
-    21300092: test_map_death_32_46
-    21300094: test_map_death_32_47
-    21300096: test_map_death_32_48
-    21300098: test_map_death_32_49
-    21300100: test_map_death_32_50
-    21300102: test_map_death_32_51
-    21300104: test_map_death_32_52
-    21300106: test_map_death_32_53
-    21300108: test_map_death_32_54
-    21300110: test_map_death_32_55
-    21300112: test_map_death_32_56
-    21300114: test_map_death_32_57
-    21300116: test_map_death_32_58
-    21300118: test_map_death_32_59
+    21300000: map_death_32_0
+    21300002: map_death_32_1
+    21300004: map_death_32_2
+    21300006: map_death_32_3
+    21300008: map_death_32_4
+    21300010: map_death_32_5
+    21300012: map_death_32_6
+    21300014: map_death_32_7
+    21300016: map_death_32_8
+    21300018: map_death_32_9
+    21300020: map_death_32_10
+    21300022: map_death_32_11
+    21300024: map_death_32_12
+    21300026: map_death_32_13
+    21300028: map_death_32_14
+    21300030: map_death_32_15
+    21300032: map_death_32_16
+    21300034: map_death_32_17
+    21300036: map_death_32_18
+    21300038: map_death_32_19
+    21300040: map_death_32_20
+    21300042: map_death_32_21
+    21300044: map_death_32_22
+    21300046: map_death_32_23
+    21300048: map_death_32_24
+    21300050: map_death_32_25
+    21300052: map_death_32_26
+    21300054: map_death_32_27
+    21300056: map_death_32_28
+    21300058: map_death_32_29
+    21300060: map_death_32_30
+    21300062: map_death_32_31
+    21300064: map_death_32_32
+    21300066: map_death_32_33
+    21300068: map_death_32_34
+    21300070: map_death_32_35
+    21300072: map_death_32_36
+    21300074: map_death_32_37
+    21300076: map_death_32_38
+    21300078: map_death_32_39
+    21300080: map_death_32_40
+    21300082: map_death_32_41
+    21300084: map_death_32_42
+    21300086: map_death_32_43
+    21300088: map_death_32_44
+    21300090: map_death_32_45
+    21300092: map_death_32_46
+    21300094: map_death_32_47
+    21300096: map_death_32_48
+    21300098: map_death_32_49
+    21300100: map_death_32_50
+    21300102: map_death_32_51
+    21300104: map_death_32_52
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -109,7 +102,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: test_map_death_32_0
+    - name: map_death_32_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,7 +112,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_1
+    - name: map_death_32_1
       rect:
         serializedVersion: 2
         x: 32
@@ -129,7 +122,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_2
+    - name: map_death_32_2
       rect:
         serializedVersion: 2
         x: 64
@@ -139,7 +132,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_3
+    - name: map_death_32_3
       rect:
         serializedVersion: 2
         x: 96
@@ -149,7 +142,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_4
+    - name: map_death_32_4
       rect:
         serializedVersion: 2
         x: 128
@@ -159,7 +152,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_5
+    - name: map_death_32_5
       rect:
         serializedVersion: 2
         x: 160
@@ -169,7 +162,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_6
+    - name: map_death_32_6
       rect:
         serializedVersion: 2
         x: 192
@@ -179,7 +172,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_7
+    - name: map_death_32_7
       rect:
         serializedVersion: 2
         x: 224
@@ -189,7 +182,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_8
+    - name: map_death_32_8
       rect:
         serializedVersion: 2
         x: 256
@@ -199,7 +192,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_9
+    - name: map_death_32_9
       rect:
         serializedVersion: 2
         x: 288
@@ -209,7 +202,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_10
+    - name: map_death_32_10
       rect:
         serializedVersion: 2
         x: 320
@@ -219,7 +212,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_11
+    - name: map_death_32_11
       rect:
         serializedVersion: 2
         x: 352
@@ -229,7 +222,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_12
+    - name: map_death_32_12
       rect:
         serializedVersion: 2
         x: 384
@@ -239,7 +232,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_13
+    - name: map_death_32_13
       rect:
         serializedVersion: 2
         x: 416
@@ -249,7 +242,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_14
+    - name: map_death_32_14
       rect:
         serializedVersion: 2
         x: 448
@@ -259,7 +252,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_15
+    - name: map_death_32_15
       rect:
         serializedVersion: 2
         x: 480
@@ -269,7 +262,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_16
+    - name: map_death_32_16
       rect:
         serializedVersion: 2
         x: 512
@@ -279,7 +272,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_17
+    - name: map_death_32_17
       rect:
         serializedVersion: 2
         x: 544
@@ -289,7 +282,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_18
+    - name: map_death_32_18
       rect:
         serializedVersion: 2
         x: 576
@@ -299,7 +292,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_19
+    - name: map_death_32_19
       rect:
         serializedVersion: 2
         x: 608
@@ -309,7 +302,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_20
+    - name: map_death_32_20
       rect:
         serializedVersion: 2
         x: 640
@@ -319,7 +312,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_21
+    - name: map_death_32_21
       rect:
         serializedVersion: 2
         x: 672
@@ -329,7 +322,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_22
+    - name: map_death_32_22
       rect:
         serializedVersion: 2
         x: 704
@@ -339,7 +332,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_23
+    - name: map_death_32_23
       rect:
         serializedVersion: 2
         x: 736
@@ -349,7 +342,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_24
+    - name: map_death_32_24
       rect:
         serializedVersion: 2
         x: 768
@@ -359,7 +352,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_25
+    - name: map_death_32_25
       rect:
         serializedVersion: 2
         x: 800
@@ -369,7 +362,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_26
+    - name: map_death_32_26
       rect:
         serializedVersion: 2
         x: 832
@@ -379,7 +372,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_27
+    - name: map_death_32_27
       rect:
         serializedVersion: 2
         x: 864
@@ -389,7 +382,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_28
+    - name: map_death_32_28
       rect:
         serializedVersion: 2
         x: 896
@@ -399,7 +392,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_29
+    - name: map_death_32_29
       rect:
         serializedVersion: 2
         x: 928
@@ -409,7 +402,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_30
+    - name: map_death_32_30
       rect:
         serializedVersion: 2
         x: 960
@@ -419,7 +412,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_31
+    - name: map_death_32_31
       rect:
         serializedVersion: 2
         x: 992
@@ -429,7 +422,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_32
+    - name: map_death_32_32
       rect:
         serializedVersion: 2
         x: 1024
@@ -439,7 +432,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_33
+    - name: map_death_32_33
       rect:
         serializedVersion: 2
         x: 1056
@@ -449,7 +442,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_34
+    - name: map_death_32_34
       rect:
         serializedVersion: 2
         x: 1088
@@ -459,7 +452,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_35
+    - name: map_death_32_35
       rect:
         serializedVersion: 2
         x: 1120
@@ -469,7 +462,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_36
+    - name: map_death_32_36
       rect:
         serializedVersion: 2
         x: 1152
@@ -479,7 +472,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_37
+    - name: map_death_32_37
       rect:
         serializedVersion: 2
         x: 1184
@@ -489,7 +482,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_38
+    - name: map_death_32_38
       rect:
         serializedVersion: 2
         x: 1216
@@ -499,7 +492,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_39
+    - name: map_death_32_39
       rect:
         serializedVersion: 2
         x: 1248
@@ -509,7 +502,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_40
+    - name: map_death_32_40
       rect:
         serializedVersion: 2
         x: 1280
@@ -519,7 +512,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_41
+    - name: map_death_32_41
       rect:
         serializedVersion: 2
         x: 1312
@@ -529,7 +522,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_42
+    - name: map_death_32_42
       rect:
         serializedVersion: 2
         x: 1344
@@ -539,7 +532,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_43
+    - name: map_death_32_43
       rect:
         serializedVersion: 2
         x: 1376
@@ -549,7 +542,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_44
+    - name: map_death_32_44
       rect:
         serializedVersion: 2
         x: 1408
@@ -559,7 +552,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_45
+    - name: map_death_32_45
       rect:
         serializedVersion: 2
         x: 1440
@@ -569,7 +562,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_46
+    - name: map_death_32_46
       rect:
         serializedVersion: 2
         x: 1472
@@ -579,7 +572,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_47
+    - name: map_death_32_47
       rect:
         serializedVersion: 2
         x: 1504
@@ -589,7 +582,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_48
+    - name: map_death_32_48
       rect:
         serializedVersion: 2
         x: 1536
@@ -599,7 +592,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_49
+    - name: map_death_32_49
       rect:
         serializedVersion: 2
         x: 1568
@@ -609,7 +602,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_50
+    - name: map_death_32_50
       rect:
         serializedVersion: 2
         x: 1600
@@ -619,7 +612,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_51
+    - name: map_death_32_51
       rect:
         serializedVersion: 2
         x: 1632
@@ -629,80 +622,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_52
+    - name: map_death_32_52
       rect:
         serializedVersion: 2
         x: 1664
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_53
-      rect:
-        serializedVersion: 2
-        x: 1696
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_54
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_55
-      rect:
-        serializedVersion: 2
-        x: 1760
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_56
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_57
-      rect:
-        serializedVersion: 2
-        x: 1824
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_58
-      rect:
-        serializedVersion: 2
-        x: 1856
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: test_map_death_32_59
-      rect:
-        serializedVersion: 2
-        x: 1888
         y: 0
         width: 32
         height: 32
