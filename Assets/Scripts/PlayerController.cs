@@ -39,15 +39,19 @@ public class PlayerController : MonoBehaviour
 	const int STATE_IDLE_R = 0;
 	const int STATE_WALK_R = 10;
 	const int STATE_JUMP_R = 30;
+	const int STATE_THROW_R = 40;
 	const int STATE_IDLE_L = 1;
 	const int STATE_WALK_L = 11;
 	const int STATE_JUMP_L = 31;
+	const int STATE_THROW_L = 41;
 	const int STATE_IDLE_B = 3;
 	const int STATE_WALK_B = 13;
 	const int STATE_JUMP_B = 33;
+	const int STATE_THROW_B = 43;
 	const int STATE_IDLE_T = 2;
 	const int STATE_WALK_T = 12;
 	const int STATE_JUMP_T = 32;
+	const int STATE_THROW_T = 42;
 	const int STATE_DIE = 20;
 
 	string currentDirection = "right";
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
+		HandleInput();
 
 		if(IsMoving && !IsJumping){
 			if (Direction == East) {
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
 				changeState (STATE_JUMP_B);
 				
 			}
-		}else{
+		}else if(!IsJumping && !IsMoving){
 			if (Direction == East) {
 				
 				changeState (STATE_IDLE_R);
@@ -238,11 +242,14 @@ public class PlayerController : MonoBehaviour
         --Lifes;
         GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
+
         if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
+
+
 
     public void Jump()
     {
@@ -265,7 +272,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ThrowStone(int x, int y)
-	{
+    {
 		ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
 		if (IsInventoryEmpty () || caseBehaviour.HasStone)
 			return;
@@ -281,6 +288,24 @@ public class PlayerController : MonoBehaviour
 		trajectory.player = this;
 		trajectory.posDeparture = this.PositionCase;
 		trajectory.posArrival = posArrival;
+
+		if (Direction == East) {
+			
+			changeState (STATE_THROW_R);
+			
+		} else if (Direction == West ) {
+			
+			changeState (STATE_THROW_L);
+			
+		} else if (Direction == North) {
+			
+			changeState (STATE_THROW_T );
+			
+		} else if (Direction == South) {
+			
+			changeState (STATE_THROW_B);
+			
+		}
     }
 
     bool CheckObstacle(Vector2 newDirection)
@@ -388,6 +413,22 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_JUMP_L:
 			animator.SetInteger ("state", STATE_JUMP_L);
+			break;
+
+		case STATE_THROW_B:
+			animator.SetInteger ("state", STATE_THROW_B);
+			break;
+			
+		case STATE_THROW_T:
+			animator.SetInteger ("state", STATE_THROW_T);
+			break;
+			
+		case STATE_THROW_R:
+			animator.SetInteger ("state", STATE_THROW_R);
+			break;
+			
+		case STATE_THROW_L:
+			animator.SetInteger ("state", STATE_THROW_L);
 			break;
 			
 		case STATE_DIE:
