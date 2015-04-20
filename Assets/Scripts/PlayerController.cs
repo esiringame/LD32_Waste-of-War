@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 	{
 		//define the animator attached to the player
 		animator = this.GetComponent<Animator>();
+        Lifes = LifesAtStartup;
         Reset();
     }
 
@@ -175,7 +176,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Reset()
+    public void Reset()
     {
         PositionCase = Grid.Instance.StartCase + Vector2.one * 0.5f;
         transform.position = new Vector3(PositionCase.x * CaseSize, PositionCase.y * CaseSize, this.transform.position.z);
@@ -184,7 +185,6 @@ public class PlayerController : MonoBehaviour
         Destination = transform.position;
         pressedTimeElapsed = 0;
 
-        Lifes = 5;
         Rocks = 0;
         IsBucketFilled = false;
 
@@ -195,6 +195,11 @@ public class PlayerController : MonoBehaviour
     {
         --Lifes;
         GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
+
+        if (IsGameOver())
+            GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+        else
+            GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
 
     public bool IsGameOver()
