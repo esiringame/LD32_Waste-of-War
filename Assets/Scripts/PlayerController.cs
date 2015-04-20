@@ -238,24 +238,27 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Die()
-    {
-        --Lifes;
-        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
+	{
+		--Lifes;
+		GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
-
-        if (IsGameOver())
+		StartCoroutine(TuerJoueur());
+		if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
 
-
-
-    public void Jump()
-    {
-        Vector3 jump = 2 * Direction;
-
-        if (!CheckObstacle(jump) && !CheckObstacle(Direction))
+	IEnumerator TuerJoueur()
+	{
+		yield return new WaitForSeconds(200f);
+	}
+	
+	public void Jump()
+	{
+		Vector3 jump = 2 * Direction;
+		
+		if (!CheckObstacle(jump) && !CheckObstacle(Direction))
         {
             Destination += jump * CaseSize;
             IsJumping = true;
