@@ -71,42 +71,67 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-       
+		if(IsMoving){
+			if (Direction == East) {
+				
+				changeState (STATE_WALK_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_WALK_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_WALK_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_WALK_B);
+				
+			}
+		}else{
+			if (Direction == East) {
+				
+				changeState (STATE_IDLE_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_IDLE_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_IDLE_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_IDLE_B);
+				
+			}
+		}
         if (transform.position != Destination) {
 			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
 				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
-				if (Direction == East) {
-					changeState (STATE_WALK_R);
-				} else if (Direction == West) {
-					changeState (STATE_WALK_L);
-				} else if (Direction == North) {
-					changeState (STATE_WALK_T);
-				} else if (Direction == South) {
-					changeState (STATE_WALK_B);
-				}
+
 				Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
+
+
 				if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
 					CurrentCase.OnLeave (this);
 					alreadyLeaveCase = true;
+
+
 				}
+				
 			} else {
+
 				transform.position = Destination;
 				PositionCase += new Vector2 (Direction.x, Direction.y);
 				CurrentCase.OnEnter (this);
 
 				alreadyLeaveCase = false;
-			}
-		} else
-		{
-			if(Direction == East){
-				changeState(STATE_IDLE_R);
-			}else if(Direction == West){
-				changeState(STATE_IDLE_L);
-			}else if(Direction == North){
-				changeState(STATE_IDLE_T);
-			}else if(Direction == South){
-				changeState(STATE_IDLE_B);
+
+
 			}
 		}
     }
@@ -115,7 +140,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!ControlEnabled)
             return;
-
+		if (Input.GetKey ("space") )
+		{
+			Die();
+		}
         if (!alreadyLeaveCase && transform.position == Destination)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -167,15 +195,7 @@ public class PlayerController : MonoBehaviour
             if (newDirection != Vector3.zero)
                 Direction = newDirection;
 			
-			if(Direction == East){
-				changeState(STATE_IDLE_R);
-			}else if(Direction == West){
-				changeState(STATE_IDLE_L);
-			}else if(Direction == North){
-				changeState(STATE_IDLE_T);
-			}else if(Direction == South){
-				changeState(STATE_IDLE_B);
-			}
+
         }
     }
 
@@ -196,9 +216,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        --Lifes;
-        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
-
+     /*   --Lifes;
+        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);*/
+		changeState (STATE_DIE);
         if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
