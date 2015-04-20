@@ -66,10 +66,7 @@ public class PlayerController : MonoBehaviour
         get { return Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x]; }
     }
 
-    public bool IsMoving
-    {
-        get { return transform.position != Destination; }
-    }
+	public bool IsMoving { get; private set; }
 
     public AudioClip dead, trash_dead, water;
 
@@ -83,69 +80,68 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-	{
-		if (waitActive) {
-				HandleInput ();
+    {
+		HandleInput();
 
-				if (IsMoving && !IsJumping) {
-					if (Direction == East) {
-						
-						changeState (STATE_WALK_R);
-						
-					} else if (Direction == West) {
-						
-						changeState (STATE_WALK_L);
-						
-					} else if (Direction == North) {
-						
-						changeState (STATE_WALK_T);
-						
-					} else if (Direction == South) {
-						
-						changeState (STATE_WALK_B);
-						
-					}
-				} else if (IsJumping) {
-					if (Direction == East) {
-						
-						changeState (STATE_JUMP_R);
-						
-					} else if (Direction == West) {
-						
-						changeState (STATE_JUMP_L);
-						
-					} else if (Direction == North) {
-						
-						changeState (STATE_JUMP_T);
-						
-					} else if (Direction == South) {
-						
-						changeState (STATE_JUMP_B);
-						
-					}
-				} else if (!IsJumping && !IsMoving) {
-					if (Direction == East) {
-						
-						changeState (STATE_IDLE_R);
-						
-					} else if (Direction == West) {
-						
-						changeState (STATE_IDLE_L);
-						
-					} else if (Direction == North) {
-						
-						changeState (STATE_IDLE_T);
-						
-					} else if (Direction == South) {
-						
-						changeState (STATE_IDLE_B);
-						
-					}
-				}
-				if (transform.position != Destination) {
-					if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
-						transform.position += Direction * MoveSpeed * Time.deltaTime;
+		if(IsMoving && !IsJumping){
+			if (Direction == East) {
+				
+				changeState (STATE_WALK_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_WALK_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_WALK_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_WALK_B);
+				
+			}
+		}else if(IsJumping){
+			if (Direction == East) {
+				
+				changeState (STATE_JUMP_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_JUMP_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_JUMP_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_JUMP_B);
+				
+			}
+		}else if(!IsJumping && !IsMoving){
+			if (Direction == East) {
+				
+				changeState (STATE_IDLE_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_IDLE_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_IDLE_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_IDLE_B);
+				
+			}
+		}
 
+		if (IsMoving) {
+			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
+				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
 						Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
 
@@ -153,31 +149,18 @@ public class PlayerController : MonoBehaviour
 						if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
 							CurrentCase.OnLeave (this);
 							alreadyLeaveCase = true;
-
-
-						}
-						
-					} else {
-
-						transform.position = Destination;
-						PositionCase += new Vector2 (Direction.x, Direction.y) * (IsJumping ? 2 : 1);
-						CurrentCase.OnEnter (this);
-
-						alreadyLeaveCase = false;
-						IsJumping = false;
-					}
-				} else {
-					if (Direction == East) {
-						changeState (STATE_IDLE_R);
-					} else if (Direction == West) {
-						changeState (STATE_IDLE_L);
-					} else if (Direction == North) {
-						changeState (STATE_IDLE_T);
-					} else if (Direction == South) {
-						changeState (STATE_IDLE_B);
-					}
 				}
-		}
+			} else {
+					
+					transform.position = Destination;
+					PositionCase += new Vector2 (Direction.x, Direction.y) * (IsJumping ? 2 : 1);
+					CurrentCase.OnEnter (this);
+					
+					alreadyLeaveCase = false;
+					IsJumping = false;
+					IsMoving = false;
+				}
+			}
     }
 
     void HandleInput()
@@ -212,6 +195,7 @@ public class PlayerController : MonoBehaviour
                     if (!CheckObstacle(newDirection))
                     {
                         Destination += Direction * CaseSize;
+						IsMoving = true;
                     }
                 }
             }
@@ -279,6 +263,7 @@ public class PlayerController : MonoBehaviour
         {
             Destination += jump * CaseSize;
             IsJumping = true;
+			IsMoving = true;
         }
     }
     public void PutStone()

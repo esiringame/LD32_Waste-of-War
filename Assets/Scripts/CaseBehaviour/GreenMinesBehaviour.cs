@@ -50,12 +50,14 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     public override void PutStone(PlayerController player)
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
+		m_player = player;
         Fragmentation();
+		m_player = null;
     }
 
     public void Fragmentation()
     {
-        List<ICaseBehaviour> adjacents = CasesAdjacentes();
+		List<ICaseBehaviour> adjacents = CasesAdjacentes();
    
         for (int i = 0; i < 3 && adjacents.Count > 0; i++)
         {
@@ -67,7 +69,7 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             // On la supprime de la liste pour ne pas retomber dessus
             adjacents.Remove(randomCase);
 
-            // Fragmentation d'une mine verte ou range
+            // Fragmentation d'une mine verte ou rouge
             if (Random.value > 0.5f)
             {
                 Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<RedMinesBehaviour>();
@@ -92,12 +94,15 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
                 // Condition aux bords
                 if (PositionY + i < Grid.Instance.Height && PositionX + j < Grid.Instance.Width && PositionY + i >= 0 && PositionX + j >= 0)
                 {
-                    ICaseBehaviour CurrentCase = Grid.Instance.grid[PositionY+i][PositionX+j];
-                    // On ne prend pas en compte les mines et obstacles
-                    if (CurrentCase is EmptyCaseBehaviour && !CurrentCase.HasStone)
-                    {
-                        adjacents.Add(CurrentCase);
-                    }
+					if(((PositionY + i + 0.5f) != m_player.PositionCase.y) && ((PositionX + j + 0.5f) != m_player.PositionCase.x))
+					{
+						ICaseBehaviour CurrentCase = Grid.Instance.grid[PositionY+i][PositionX+j];
+						// On ne prend pas en compte les mines et obstacles
+						if (CurrentCase is EmptyCaseBehaviour && !CurrentCase.HasStone)
+						{
+							adjacents.Add(CurrentCase);
+						}
+					}
                 }
             }
         }
