@@ -10,7 +10,6 @@ public class Grid : DesignPattern.Singleton<Grid>
 
     public ICaseBehaviour[][] grid { get; private set; }
 
-
     void Start()
     {
 		grid = new ICaseBehaviour[Height][];
@@ -54,7 +53,7 @@ public class Grid : DesignPattern.Singleton<Grid>
                     
                     caseBehaviour.SetPosition(x, y);
                     ((MonoBehaviour)caseBehaviour).transform.parent = transform;
-                    ((MonoBehaviour)caseBehaviour).transform.position = new Vector3(x, y, 0);
+                    ((MonoBehaviour)caseBehaviour).transform.position = new Vector3(x + 0.5f, y + 0.5f, 0);
                     grid[y][x] = caseBehaviour;
                 }
             }

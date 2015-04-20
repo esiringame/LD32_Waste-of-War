@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            else
-                pressedTimeElapsed = 0;
+            //else
+            //    pressedTimeElapsed = 0;
 
             if (newDirection != Vector3.zero)
                 Direction = newDirection;
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     void Reset()
     {
-        PositionCase = Grid.Instance.StartCase;
+        PositionCase = Grid.Instance.StartCase + Vector2.one * 0.5f;
         transform.position = new Vector3(PositionCase.x * CaseSize, PositionCase.x * CaseSize, this.transform.position.z);
 
         Direction = Vector3.right;
