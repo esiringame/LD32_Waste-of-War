@@ -6,8 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Grid : DesignPattern.Singleton<Grid>
 {
-    public int Height = 10;
-    public int Width = 30;
+    public int Height = 12;
+    public int Width = 32;
 
     public Vector2 StartCase { get; private set; }
 
@@ -49,7 +49,23 @@ public class Grid : DesignPattern.Singleton<Grid>
 							break;
 						case CaseData.Well:
 							caseBehaviour = Factory<WellCaseBehaviour>.New("Case/Well");
-							break;
+                            break;
+                        case CaseData.BorderLeft:
+                            caseBehaviour = Factory<BorderCaseBehaviour>.New("Case/Border");
+                            caseBehaviour.Rotation = Quaternion.AngleAxis(90, Vector3.forward);
+                            break;
+                        case CaseData.BorderRight:
+                            caseBehaviour = Factory<BorderCaseBehaviour>.New("Case/Border");
+                            caseBehaviour.Rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+                            break;
+                        case CaseData.BorderTop:
+                            caseBehaviour = Factory<BorderCaseBehaviour>.New("Case/Border");
+                            caseBehaviour.Rotation = Quaternion.AngleAxis(0, Vector3.forward);
+                            break;
+                        case CaseData.BorderBottom:
+                            caseBehaviour = Factory<BorderCaseBehaviour>.New("Case/Border");
+                            caseBehaviour.Rotation = Quaternion.AngleAxis(180, Vector3.forward);
+                            break;
                         default:
                             caseBehaviour = Factory<EmptyCaseBehaviour>.New("Case/EmptyCase");
                             break;
@@ -62,6 +78,6 @@ public class Grid : DesignPattern.Singleton<Grid>
                 }
             }
 
-        StartCase = new Vector2(0, Height / 2);
+        StartCase = new Vector2(1, Height / 2);
     }
 }

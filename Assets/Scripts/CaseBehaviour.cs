@@ -15,9 +15,14 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
 
     public abstract bool IsObstacle { get; }
 
+    public Quaternion Rotation
+    {
+        set { transform.localRotation = value; }
+    }
+
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = TilesetGallery.Instance.GetBackground();
+        GetComponent<SpriteRenderer>().sprite = TilesetGallery.Instance.GetBackground(GetType());
         RefreshObjectSprite();
     }
 

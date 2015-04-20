@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2319116}
   - 114: {fileID: 11487318}
   - 82: {fileID: 8246900}
+  - 95: {fileID: 9541066}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -173,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -299,6 +300,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140158}
   m_Enabled: 1
+--- !u!95 &9541066
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124292}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11438316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,6 +332,11 @@ MonoBehaviour:
   - {fileID: 21300006, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   - {fileID: 21300008, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   - {fileID: 21300010, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  Border:
+  - {fileID: 21300000, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  - {fileID: 21300002, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  - {fileID: 21300004, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  Entry: {fileID: 21300022, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   Stone: {fileID: 21300016, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   Tree: {fileID: 21300014, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   Well: {fileID: 21300012, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
@@ -342,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9edb7e95e9b9243b9d72aa327f2f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Height: 10
-  Width: 30
+  Height: 12
+  Width: 32
 --- !u!114 &11484192
 MonoBehaviour:
   m_ObjectHideFlags: 1
