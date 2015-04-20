@@ -5,11 +5,6 @@ public class FollowCamera : MonoBehaviour
 {
     public GameObject Player;
 
-	void Start ()
-    {
-		transform.position = new Vector3(7.0f, 5.0f, transform.position.z);
-	}
-
 	void Update ()
     {
         float height = Grid.Instance.Height;
