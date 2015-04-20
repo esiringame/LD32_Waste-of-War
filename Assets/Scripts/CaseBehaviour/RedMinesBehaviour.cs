@@ -39,6 +39,7 @@ public class RedMinesBehaviour : CaseBehaviour<RedMinesBehaviour> {
     {
         if (!HasStone)
         {
+			base.PutStone(player);
             GetComponent<AudioSource>().PlayOneShot(mineDisarmed, 1.0F);
         }
     }
