@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
         get { return Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x]; }
     }
 
+    public bool IsMoving
+    {
+        get { return transform.position != Destination; }
+    }
+
     public AudioClip dead, trash_dead, water;
 
     void Start()

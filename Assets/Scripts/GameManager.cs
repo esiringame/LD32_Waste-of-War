@@ -20,7 +20,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
 
     void Awake()
     {
-        State = new PlayGameState(this);
+        State = new BeginGameState(this);
 
         Player = GetComponentInChildren<PlayerController>();
     }

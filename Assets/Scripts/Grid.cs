@@ -19,7 +19,8 @@ public class Grid : DesignPattern.Singleton<Grid>
         for (int i = 0; i < grid.Length; i++)
             grid[i] = new ICaseBehaviour[Width];
 
-        CaseData[][] dataGrid = MapGenerator.GenerateMap(Width, Height, (int)DateTime.Now.Ticks);
+        //CaseData[][] dataGrid = MapGenerator.GenerateMap(Width, Height, (int)DateTime.Now.Ticks);
+        CaseData[][] dataGrid = MapGenerator.EmptyMap(Width, Height);
 
         for (int y = 0; y < Height; y++)
             {

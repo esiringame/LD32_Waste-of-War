@@ -15,5 +15,6 @@ public class VictoryGameState : GameState
 
     public override void Update()
     {
+        Application.LoadLevel((int)SceneId.HighScore);
     }
 }

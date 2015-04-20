@@ -10,10 +10,12 @@ public class PauseGameState : GameState
 
     public override void Init()
     {
-        GameManager.Resume();
+        GameManager.Pause();
     }
 
     public override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.DifferedChangeState(new PlayGameState(GameManager.Instance));
     }
 }

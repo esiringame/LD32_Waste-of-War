@@ -15,5 +15,6 @@ public class GameOverState : GameState
 
     public override void Update()
     {
+        Application.LoadLevel((int)SceneId.MainMenu);
     }
 }

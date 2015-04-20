@@ -15,5 +15,6 @@ public class BeginGameState : GameState
 
     public override void Update()
     {
+        GameManager.DifferedChangeState(new IntroGameState(GameManager));
     }
 }

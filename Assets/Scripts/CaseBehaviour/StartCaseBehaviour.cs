@@ -12,7 +12,7 @@ public class StartCaseBehaviour : CaseBehaviour<StartCaseBehaviour> {
     {
         if (player.IsBucketFilled)
         {
-            //GameManager.ChangeState(VictoryState);
+            GameManager.Instance.DifferedChangeState(new VictoryGameState(GameManager.Instance));
         }
     }
 }

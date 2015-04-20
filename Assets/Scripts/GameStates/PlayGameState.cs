@@ -15,5 +15,7 @@ public class PlayGameState : GameState
 
     public override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Player.IsMoving)
+            GameManager.DifferedChangeState(new PauseGameState(GameManager.Instance));
     }
 }
