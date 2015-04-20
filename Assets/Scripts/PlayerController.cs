@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 	private bool facingRight = true;
 
 	string currentDirection = "right";
-	int _currentAnimationState = STATE_IDLE_L;
+	int _currentAnimationState = STATE_IDLE_R;
 
 	public bool waitActive;
 
@@ -457,5 +457,6 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		_currentAnimationState = state;
+		Debug.Log (_currentAnimationState);
 	}
 }
