@@ -260,7 +260,7 @@ MonoBehaviour:
   RocksAtStartup: 1
   IsBucketFilled: 0
   ControlEnabled: 1
-  MoveSpeed: 5
+  MoveSpeed: 3
   Lifes: 0
   Rocks: 0
   dead: {fileID: 0}

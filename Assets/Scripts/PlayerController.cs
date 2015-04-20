@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool IsBucketFilled = false;
 
     public bool ControlEnabled = true;
-    public float MoveSpeed = 1;
+    public float MoveSpeed = 3;
 
     public int Lifes;
     public int Rocks;
@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            //else
-            //    pressedTimeElapsed = 0;
+            else
+                pressedTimeElapsed = 0;
 
             if (newDirection != Vector3.zero)
                 Direction = newDirection;
