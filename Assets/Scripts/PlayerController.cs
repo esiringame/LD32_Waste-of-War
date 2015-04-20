@@ -89,6 +89,9 @@ public class PlayerController : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
+            if (Input.GetKeyDown(KeyCode.Space))
+                PutStone();
+
             Vector3 newDirection = Vector3.zero;
 
             if (horizontalInput > 0)
@@ -158,6 +161,20 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
+    }
+
+    void PutStone()
+    {
+        ICaseBehaviour caseBehaviour = Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x];
+        if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
+            caseBehaviour.PutStone(this);
+    }
+
+    void ThrowStone(int x, int y)
+    {
+        ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
+        if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
+            caseBehaviour.PutStone(this);
     }
 
     public bool IsGameOver()
