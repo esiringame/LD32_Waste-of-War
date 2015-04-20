@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
        
-        if (transform.position != Destination) {
+        if (transform.position != Destination)
+        {
 			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
 				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
@@ -92,10 +93,11 @@ public class PlayerController : MonoBehaviour
 				}
 			} else {
 				transform.position = Destination;
-				PositionCase += new Vector2 (Direction.x, Direction.y);
+                PositionCase += new Vector2(Direction.x, Direction.y) * (IsJumping ? 2 : 1);
 				CurrentCase.OnEnter (this);
 
 				alreadyLeaveCase = false;
+			    IsJumping = false;
 			}
 		} else
 		{
@@ -121,9 +123,6 @@ public class PlayerController : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                PutStone();
-
             Vector3 newDirection = Vector3.zero;
 
             if (horizontalInput > 0)
@@ -143,19 +142,7 @@ public class PlayerController : MonoBehaviour
 
                 if (pressedTimeElapsed >= PressedTimePeriod)
                 {
-                    Vector2 misDirection = new Vector2(PositionCase.x + newDirection.x, PositionCase.y + newDirection.y);
-                    bool isObstacle = false;
-                    if (misDirection.y >= 0 && misDirection.x >= 0 && misDirection.x < Grid.Instance.Width && misDirection.y < Grid.Instance.Height)
-                    {
-                        if (Grid.Instance.grid[(int)misDirection.y][(int)misDirection.x].IsObstacle)
-                        {
-                            isObstacle = true;
-                        }
-                    }
-                    else
-                        isObstacle = true;
-                    
-                    if (!isObstacle)
+                    if (!CheckObstacle(newDirection))
                     {
                         Destination += Direction * CaseSize;
                     }
@@ -166,6 +153,9 @@ public class PlayerController : MonoBehaviour
 
             if (newDirection != Vector3.zero)
                 Direction = newDirection;
+
+            if (!IsMoving && Input.GetKeyDown(KeyCode.Space))
+                Jump();
 			
 			if(Direction == East){
 				changeState(STATE_IDLE_R);
@@ -205,6 +195,17 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
 
+    public void Jump()
+    {
+        Vector3 jump = 2 * Direction;
+
+        if (!CheckObstacle(jump) && !CheckObstacle(Direction))
+        {
+            Destination += jump * CaseSize;
+            IsJumping = true;
+        }
+    }
+
     void PutStone()
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x];
@@ -217,6 +218,21 @@ public class PlayerController : MonoBehaviour
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
         if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
             caseBehaviour.PutStone(this);
+    }
+
+    bool CheckObstacle(Vector2 newDirection)
+    {
+        Vector2 misDirection = new Vector2(PositionCase.x + newDirection.x, PositionCase.y + newDirection.y);
+        if (misDirection.y >= 0 && misDirection.x >= 0 && misDirection.x < Grid.Instance.Width
+            && misDirection.y < Grid.Instance.Height)
+        {
+            if (Grid.Instance.grid[(int)misDirection.y][(int)misDirection.x].IsObstacle)
+                return true;
+        }
+        else
+            return true;
+
+        return false;
     }
 
     public bool IsGameOver()
