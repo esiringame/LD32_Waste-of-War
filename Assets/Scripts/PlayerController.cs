@@ -71,27 +71,61 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-       
-        if (transform.position != Destination)
-        {
+
+		if(IsMoving){
+			if (Direction == East) {
+				
+				changeState (STATE_WALK_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_WALK_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_WALK_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_WALK_B);
+				
+			}
+		}else{
+			if (Direction == East) {
+				
+				changeState (STATE_IDLE_R);
+				
+			} else if (Direction == West ) {
+				
+				changeState (STATE_IDLE_L);
+				
+			} else if (Direction == North) {
+				
+				changeState (STATE_IDLE_T );
+				
+			} else if (Direction == South) {
+				
+				changeState (STATE_IDLE_B);
+				
+			}
+		}
+        if (transform.position != Destination) {
 			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
 				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
-				if (Direction == East) {
-					changeState (STATE_WALK_R);
-				} else if (Direction == West) {
-					changeState (STATE_WALK_L);
-				} else if (Direction == North) {
-					changeState (STATE_WALK_T);
-				} else if (Direction == South) {
-					changeState (STATE_WALK_B);
-				}
+
 				Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
+
+
 				if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
 					CurrentCase.OnLeave (this);
 					alreadyLeaveCase = true;
+
+
 				}
+				
 			} else {
+
 				transform.position = Destination;
                 PositionCase += new Vector2(Direction.x, Direction.y) * (IsJumping ? 2 : 1);
 				CurrentCase.OnEnter (this);
@@ -117,7 +151,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!ControlEnabled)
             return;
-
+		if (Input.GetKey ("space") )
+		{
+			Die();
+		}
         if (!alreadyLeaveCase && transform.position == Destination)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -157,15 +194,7 @@ public class PlayerController : MonoBehaviour
             if (!IsMoving && Input.GetKeyDown(KeyCode.Space))
                 Jump();
 			
-			if(Direction == East){
-				changeState(STATE_IDLE_R);
-			}else if(Direction == West){
-				changeState(STATE_IDLE_L);
-			}else if(Direction == North){
-				changeState(STATE_IDLE_T);
-			}else if(Direction == South){
-				changeState(STATE_IDLE_B);
-			}
+
         }
     }
 
@@ -186,9 +215,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        --Lifes;
-        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
-
+     /*   --Lifes;
+        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);*/
+		changeState (STATE_DIE);
         if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
@@ -205,15 +234,14 @@ public class PlayerController : MonoBehaviour
             IsJumping = true;
         }
     }
-
-    void PutStone()
+    public void PutStone()
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[(int)PositionCase.y][(int)PositionCase.x];
         if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
             caseBehaviour.PutStone(this);
     }
 
-    void ThrowStone(int x, int y)
+    public void ThrowStone(int x, int y)
     {
         ICaseBehaviour caseBehaviour = Grid.Instance.grid[y][x];
         if (!IsInventoryEmpty() && !caseBehaviour.HasStone)
