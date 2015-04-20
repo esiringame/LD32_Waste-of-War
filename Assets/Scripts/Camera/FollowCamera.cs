@@ -1,22 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowCamera : MonoBehaviour {
+public class FollowCamera : MonoBehaviour
+{
+    public GameObject Player;
 
-	public GameObject player;
-
-	private int height;
-	private int width;
-
-	void Start () {
-		transform.position = new Vector3(player.transform.position.x, 5.5f, transform.position.z);
+	void Start ()
+    {
+		transform.position = new Vector3(7.0f, 5.0f, transform.position.z);
 	}
 
-	void Update () {
-		height = Grid.Instance.Height;
-		width = Grid.Instance.Width;
+	void Update ()
+    {
+        float height = Grid.Instance.Height;
+        float width = Grid.Instance.Width;
+	    Vector2 origin = Grid.Instance.transform.position;
 
-		if (player.transform.position.x > 5 && player.transform.position.x < width - 5)
-			transform.position = new Vector3(player.transform.position.x, 5.5f, transform.position.z);
-	}
+	    Vector2 cameraPosition = Player.transform.position;
+
+        float cameraHeight = height;
+        float cameraWidth = GetComponent<Camera>().aspect * height;
+
+        if (cameraPosition.x < origin.x + cameraWidth / 2f)
+            cameraPosition.x = origin.x + cameraWidth / 2f;
+        if (cameraPosition.y < origin.y + cameraHeight / 2f)
+            cameraPosition.y = origin.y + cameraHeight / 2f;
+        if (cameraPosition.x > origin.x + width - cameraWidth / 2f)
+            cameraPosition.x = origin.x + width - cameraWidth / 2f;
+        if (cameraPosition.y > origin.y + height - cameraHeight / 2f)
+            cameraPosition.y = origin.y + height - cameraHeight / 2f;
+
+	    transform.position = new Vector3(cameraPosition.x, cameraPosition.y, transform.localPosition.z);
+    }
 }

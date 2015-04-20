@@ -7,5 +7,7 @@ public enum CaseData
     RedMines,
     GreenMines,
     Stone,
-    Obstacle
+    Obstacle,
+	Start,
+	Well
 };

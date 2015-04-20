@@ -1,0 +1,6 @@
+Alors la map de sprite pour la l'explosion et la mort d'une mine est en UNE ligne de beaucoup de sprites, divisée comme telle:
+
+du sprite 1 à 20, explosion de la mine
+le sprite 21 est l'idle apres l'explosion, a maintenir environ 1 ou 2 secondes pour l'effet comique
+du sprite 22 à 52,décomposition du perso en squelette olol
+sprite 53 : squelette blanchi qui tient debout reolol
