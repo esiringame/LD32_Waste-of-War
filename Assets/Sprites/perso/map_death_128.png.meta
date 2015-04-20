@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 02f84182695fac24ba54da77381d8d4c
-timeCreated: 1429531893
+timeCreated: 1429538717
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -809,76 +809,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6656
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_53
-      rect:
-        serializedVersion: 2
-        x: 6784
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_54
-      rect:
-        serializedVersion: 2
-        x: 6912
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_55
-      rect:
-        serializedVersion: 2
-        x: 7040
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_56
-      rect:
-        serializedVersion: 2
-        x: 7168
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_57
-      rect:
-        serializedVersion: 2
-        x: 7296
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_58
-      rect:
-        serializedVersion: 2
-        x: 7424
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: map_death_128_59
-      rect:
-        serializedVersion: 2
-        x: 7552
         y: 0
         width: 128
         height: 128

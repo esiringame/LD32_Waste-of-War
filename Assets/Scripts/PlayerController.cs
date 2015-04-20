@@ -151,10 +151,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!ControlEnabled)
             return;
-		if (Input.GetKey ("space") )
-		{
-			Die();
-		}
+
         if (!alreadyLeaveCase && transform.position == Destination)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -215,8 +212,8 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-     /*   --Lifes;
-        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);*/
+        --Lifes;
+        GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
         if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
