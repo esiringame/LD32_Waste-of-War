@@ -1,0 +1,20 @@
+Synopsis:
+
+In a small village located in the desert, children are sent to collect water from a distant well. However, former wars left a merciless minefield in between.
+
+Lead their steps through the minefield and bring the precious liquid to your thirsty people.
+
+
+
+Controls:
+
+Arrow keys: move
+Spacebar: jump
+Left-click: throw a stone or leave it at your foot
+
+
+
+Mines:
+
+Red mine explodes when you leave it. Remember to put a stone on it. 
+Green mine explodes briefly after you walk on it. Jump quickly.

@@ -54,8 +54,12 @@ public class PlayerController : MonoBehaviour
 	const int STATE_THROW_T = 42;
 	const int STATE_DIE = 20;
 
+	private bool facingRight = true;
+
 	string currentDirection = "right";
 	int _currentAnimationState = STATE_IDLE_L;
+
+	public bool waitActive;
 
     public ICaseBehaviour CurrentCase
     {
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
 	{
+		waitActive = true;
 		//define the animator attached to the player
 		animator = this.GetComponent<Animator>();
         Lifes = LifesAtStartup;
@@ -138,15 +143,12 @@ public class PlayerController : MonoBehaviour
 			if (Vector3.Dot (Direction, Destination - transform.position) > 0) {
 				transform.position += Direction * MoveSpeed * Time.deltaTime;
 
-
-				Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
-
-
-				if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
-					CurrentCase.OnLeave (this);
-					alreadyLeaveCase = true;
+						Vector3 lastPosition = new Vector3 (PositionCase.x * CaseSize, PositionCase.y * CaseSize, transform.position.z);
 
 
+						if (!alreadyLeaveCase && (Destination - transform.position).magnitude < 2 * (Destination - lastPosition).magnitude / 3) {
+							CurrentCase.OnLeave (this);
+							alreadyLeaveCase = true;
 				}
 			} else {
 					
@@ -209,7 +211,12 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
+	private void Flip() {
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
     public void Reset()
     {
         PositionCase = Grid.Instance.StartCase + Vector2.one * 0.5f;
@@ -230,16 +237,22 @@ public class PlayerController : MonoBehaviour
 		--Lifes;
 		GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
-		StartCoroutine(TuerJoueur());
-		if (IsGameOver())
-            GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
-        else
-            GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
+		
+		StartCoroutine(ded());
     }
 
-	IEnumerator TuerJoueur()
-	{
-		yield return new WaitForSeconds(200f);
+	IEnumerator ded(){
+		waitActive = false;
+		yield return new WaitForSeconds (3.0f);
+		
+		waitActive = true;
+		if (IsGameOver ()) {
+			GameManager.Instance.ChangeState (new GameOverState (GameManager.Instance));
+		
+
+		} else {
+			GameManager.Instance.ChangeState (new DeathGameState (GameManager.Instance));
+		}
 	}
 	
 	public void Jump()
