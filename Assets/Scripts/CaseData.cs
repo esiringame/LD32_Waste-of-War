@@ -9,5 +9,9 @@ public enum CaseData
     Stone,
     Obstacle,
 	Start,
-	Well
+	Well,
+    BorderLeft,
+    BorderRight,
+    BorderTop,
+    BorderBottom
 };
