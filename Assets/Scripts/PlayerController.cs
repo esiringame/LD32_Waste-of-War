@@ -442,6 +442,5 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		_currentAnimationState = state;
-		Debug.Log (_currentAnimationState);
 	}
 }
