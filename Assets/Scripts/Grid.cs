@@ -1,22 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using DesignPattern;
+using Random = UnityEngine.Random;
 
 public class Grid : DesignPattern.Singleton<Grid>
 {
     public int Height = 10;
     public int Width = 30;
-    public Vector2 StartCase;
+
+    public Vector2 StartCase { get; private set; }
 
     public ICaseBehaviour[][] grid { get; private set; }
 
-    void Start()
+    void Awake()
     {
 		grid = new ICaseBehaviour[Height][];
         for (int i = 0; i < grid.Length; i++)
             grid[i] = new ICaseBehaviour[Width];
 
-        CaseData[][] dataGrid = MapGenerator.GenerateMap(Width, Height, 1);
+        CaseData[][] dataGrid = MapGenerator.GenerateMap(Width, Height, (int)DateTime.Now.Ticks);
 
         for (int y = 0; y < Height; y++)
             {
@@ -57,5 +60,7 @@ public class Grid : DesignPattern.Singleton<Grid>
                     grid[y][x] = caseBehaviour;
                 }
             }
+
+        StartCase = new Vector2(0, Height / 2);
     }
 }

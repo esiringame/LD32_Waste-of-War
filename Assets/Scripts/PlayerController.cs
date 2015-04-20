@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     void Reset()
     {
         PositionCase = Grid.Instance.StartCase + Vector2.one * 0.5f;
-        transform.position = new Vector3(PositionCase.x * CaseSize, PositionCase.x * CaseSize, this.transform.position.z);
+        transform.position = new Vector3(PositionCase.x * CaseSize, PositionCase.y * CaseSize, this.transform.position.z);
 
         Direction = Vector3.right;
         Destination = transform.position;

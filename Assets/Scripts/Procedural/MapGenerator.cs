@@ -14,26 +14,11 @@ public class MapGenerator
     {
         Random.seed = seed;
 
-        var map = new CaseData[sizeY][];
-        for (int i = 0; i < sizeY; i++)
-            map[i] = new CaseData[sizeX];
-
-        // First column
-
-        var sectorGenerator = new SectorGenerator {
-            Height = sizeY,
-            Width = 1,
-			NumberByType = 
-			{
-				{CaseData.Start, sizeY}
-			}
-        };
-
-        sectorGenerator.GenerateSector(map, 0, 0);
+        CaseData[][] map = EmptyMap(sizeX, sizeY);
 
         // Begin
 
-        sectorGenerator = new SectorGenerator {
+        var sectorGenerator = new SectorGenerator {
             Height = sizeY,
             Width = 2,
             NumberByType =
@@ -75,7 +60,21 @@ public class MapGenerator
 
         sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 1) * SectorWidth, 0);
 
-		map [sizeY / 2] [sizeX - 1] = CaseData.Well;
+        return map;
+    }
+
+    public static CaseData[][] EmptyMap(int sizeX, int sizeY)
+    {
+        var map = new CaseData[sizeY][];
+        for (int i = 0; i < sizeY; i++)
+            map[i] = new CaseData[sizeX];
+
+        // Start
+        for (int i = 0; i < sizeY; i++)
+            map[i][0] = CaseData.Start;
+
+        // Well
+        map[sizeY / 2][sizeX - 1] = CaseData.Well;
 
         return map;
     }
@@ -109,12 +108,12 @@ public class MapGenerator
 
                     do
                     {
+                        if (visitedCount >= Width * Height)
+                            throw new Exception(string.Format("Can't place a {0} case considering the conditions !", type));
+
                         y = Random.Range(0, Height);
                         x = Random.Range(0, Width);
                         visitedCount++;
-
-                        if (visitedCount >= Width * Height)
-                            throw new Exception(string.Format("Can't place a {0} case considering the conditions !", type));
                     }
                     while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase || !ConditionsByCaseType(map, type, originSectorX + x, originSectorY + y));
 
