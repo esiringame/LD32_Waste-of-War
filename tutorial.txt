@@ -1,0 +1,9 @@
+Reach the well, fill your bucket with water and go back to the village. But beware the mines… 
+
+Red mine explodes when you leave it. Remember to put a stone on it. 
+Green mine explodes briefly after you walk on it. Jump quickly.
+
+
+Arrow keys: move
+Spacebar: jump
+Left-click: throw a stone or leave it at your foot
