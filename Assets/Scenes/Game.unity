@@ -87,42 +87,42 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1966140731
+--- !u!1001 &1635715171
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 418254, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
+    - target: {fileID: 498120, guid: 296343ca464ee2d4ca1d52b1b509b25a, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}

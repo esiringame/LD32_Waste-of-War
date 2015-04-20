@@ -242,11 +242,14 @@ public class PlayerController : MonoBehaviour
         --Lifes;
         GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
+
         if (IsGameOver())
             GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
         else
             GameManager.Instance.ChangeState(new DeathGameState(GameManager.Instance));
     }
+
+
 
     public void Jump()
     {
