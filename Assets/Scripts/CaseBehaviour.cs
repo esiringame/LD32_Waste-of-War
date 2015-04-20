@@ -52,6 +52,10 @@ public abstract class CaseBehaviour<T> : Factory<T>, ICaseBehaviour
     {
         TBehaviour newBehaviour = gameObject.AddComponent<TBehaviour>();
         newBehaviour.Object = Object;
+        newBehaviour.SetPosition(PositionX, PositionY);
+        newBehaviour.transform.parent = transform;
+        newBehaviour.transform.position = new Vector3(PositionX + 0.5f, PositionY + 0.5f, 0);
+
         Destroy(GetComponent(GetType()));
 
         RefreshObjectSprite();
