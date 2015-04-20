@@ -20,10 +20,10 @@ public class MapGenerator
 
         var sectorGenerator = new SectorGenerator {
             Height = sizeY - 2,
-            Width = 1,
+            Width = 2,
             NumberByType =
                 {
-                    {CaseData.Obstacle, 2 * ObstaclesNumberBySector / 5}
+                    {CaseData.Obstacle, 4}
                 }
         };
 
@@ -48,18 +48,22 @@ public class MapGenerator
 
             sectorGenerator.NumberByType[CaseData.RedMines] = redMinesNumber;
             sectorGenerator.NumberByType[CaseData.GreenMines] = MinesNumberBySector - redMinesNumber;
-            sectorGenerator.GenerateSector(map, 3 + i * SectorWidth, 1);
+            sectorGenerator.GenerateSector(map, 4 + i * SectorWidth, 1);
         }
 
         // End
-
+        
         sectorGenerator = new SectorGenerator {
             Height = sizeY - 2,
-            Width = 2
+            Width = 1,
+            NumberByType =
+                {
+                    {CaseData.Obstacle, 2}
+                }
         };
 
-        sectorGenerator.GenerateSector(map, 3 + (sizeX / SectorWidth - 2) * SectorWidth, 1);
-
+        sectorGenerator.GenerateSector(map, 4 + (sizeX / SectorWidth - 1) * SectorWidth, 1);
+        
         return map;
     }
 
@@ -117,12 +121,12 @@ public class MapGenerator
 
                     do
                     {
-                        if (visitedCount >= Width * Height)
-                            throw new Exception(string.Format("Can't place a {0} case considering the conditions !", type));
-
                         y = Random.Range(0, Height);
                         x = Random.Range(0, Width);
                         visitedCount++;
+
+                        if (visitedCount >= Width * Height)
+                            break;
                     }
                     while (map[originSectorY + y][originSectorX + x] != CaseData.EmptyCase || !ConditionsByCaseType(map, type, originSectorX + x, originSectorY + y));
 
