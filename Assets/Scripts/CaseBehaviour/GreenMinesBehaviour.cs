@@ -70,7 +70,7 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
 		m_player = player;
-        Fragmentation();
+		Fragmentation();
 		m_player = null;
     }
 

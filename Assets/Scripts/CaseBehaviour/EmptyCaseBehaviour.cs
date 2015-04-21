@@ -45,5 +45,9 @@ public class EmptyCaseBehaviour : CaseBehaviour<EmptyCaseBehaviour>
 		if (!remanant)
 			base.RefreshObjectSprite ();
 	}
-	
+
+	public void CancelRemanant()
+	{
+		visible = 10;
+	}
 }
