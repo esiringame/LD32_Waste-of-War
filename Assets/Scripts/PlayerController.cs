@@ -82,10 +82,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-		if (isDead)
-			return;
+        if (isDead)
+            return;
 
-		HandleInput();
+        HandleInput();
 
 		if(IsMoving && !IsJumping){
 			if (Direction == East) {
@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
 	{
 		isDead = true;
+        IsMoving = false;
 		--Lifes;
 		GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
