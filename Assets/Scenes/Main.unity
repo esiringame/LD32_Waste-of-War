@@ -256,15 +256,47 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11492966, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
       propertyPath: m_Color.r
-      value: 0
+      value: .850980401
       objectReference: {fileID: 0}
     - target: {fileID: 11492966, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
       propertyPath: m_Color.g
-      value: .0901960805
+      value: .850980401
       objectReference: {fileID: 0}
     - target: {fileID: 11492966, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
       propertyPath: m_Color.b
-      value: .0823529437
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430452, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Text
+      value: Waste of war
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430452, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427238, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.r
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427238, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.g
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427238, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.b
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435678, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.r
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435678, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.g
+      value: .850980401
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435678, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
+      propertyPath: m_Color.b
+      value: .850980401
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 163b811ba6ed11e4082176956ce195ca, type: 2}
