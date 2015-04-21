@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 	const int STATE_DIE = 20;
 
 	private bool facingRight = true;
+	private bool isDead = false;
 
 	string currentDirection = "right";
 	int _currentAnimationState = STATE_IDLE_R;
@@ -81,6 +82,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+		if (isDead)
+			return;
+
 		HandleInput();
 
 		if(IsMoving && !IsJumping){
@@ -234,6 +238,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
 	{
+		isDead = true;
 		--Lifes;
 		GetComponent<AudioSource>().PlayOneShot(Random.value > 0.5 ? dead : trash_dead, 1.0f);
 		changeState (STATE_DIE);
@@ -244,6 +249,8 @@ public class PlayerController : MonoBehaviour
 	IEnumerator ded(){
 		waitActive = false;
 		yield return new WaitForSeconds (3.0f);
+
+		isDead = false;
 		
 		waitActive = true;
 		if (IsGameOver ()) {
