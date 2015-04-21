@@ -94,11 +94,13 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
             {
                 Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<RedMinesBehaviour>();
 				(Grid.Instance.grid[y][x] as RedMinesBehaviour).setMineVisible(true);
+                TilesetGallery.Instance.SetSounds(Grid.Instance.grid[y][x]);
             }
             else
             {
 				Grid.Instance.grid[y][x] = Grid.Instance.grid[y][x].ChangeBehaviour<GreenMinesBehaviour>();
-				(Grid.Instance.grid[y][x] as GreenMinesBehaviour).setMineVisible(true);
+                (Grid.Instance.grid[y][x] as GreenMinesBehaviour).setMineVisible(true);
+                TilesetGallery.Instance.SetSounds(Grid.Instance.grid[y][x]);
 			}
 		}
         // Transforme cette case en case vide

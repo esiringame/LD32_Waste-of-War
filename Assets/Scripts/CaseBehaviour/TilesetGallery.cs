@@ -14,6 +14,12 @@ public class TilesetGallery : Singleton<TilesetGallery>
     public Sprite RedMine;
     public Sprite GreenMine;
 
+    public AudioClip redArmed;
+    public AudioClip redDisarmed;
+    public AudioClip redBoom;
+    public AudioClip greenArmed;
+    public AudioClip greenBoom;
+
     public Sprite GetBackground(Type type)
     {
         if (type == typeof(BorderCaseBehaviour))
@@ -36,5 +42,20 @@ public class TilesetGallery : Singleton<TilesetGallery>
             return GreenMine;
 
         return null;
+    }
+
+    public void SetSounds(ICaseBehaviour caseBehaviour)
+    {
+        if (caseBehaviour is RedMinesBehaviour)
+        {
+            (caseBehaviour as RedMinesBehaviour).mineArmed = redArmed;
+            (caseBehaviour as RedMinesBehaviour).mineDisarmed = redDisarmed;
+            (caseBehaviour as RedMinesBehaviour).boom = redBoom;
+        }
+        if (caseBehaviour is GreenMinesBehaviour)
+        {
+            (caseBehaviour as GreenMinesBehaviour).mineArmed = greenArmed;
+            (caseBehaviour as GreenMinesBehaviour).boom = greenBoom;
+        }
     }
 }

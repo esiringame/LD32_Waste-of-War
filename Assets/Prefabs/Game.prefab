@@ -558,13 +558,14 @@ MonoBehaviour:
   RocksAtStartup: 1
   IsBucketFilled: 0
   ControlEnabled: 1
-  MoveSpeed: 1
   Lifes: 0
   Rocks: 0
   waitActive: 0
   dead: {fileID: 8300000, guid: 94593aa86cf62f747864f443f650e23c, type: 3}
   trash_dead: {fileID: 8300000, guid: f4638dd1020aab54d9a423076969018f, type: 3}
   water: {fileID: 8300000, guid: e571ebd511def3e418bd8c82a1573e77, type: 3}
+  footstep: {fileID: 8300000, guid: 1233eea008bab9947badbbf5b90adada, type: 3}
+  jump: {fileID: 8300000, guid: d1c5d2dff2d2c974dbc844c68b2f7802, type: 3}
 --- !u!114 &11405890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -651,6 +652,11 @@ MonoBehaviour:
   Well: {fileID: 21300012, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   RedMine: {fileID: 21300020, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
   GreenMine: {fileID: 21300018, guid: 4cb0e1bf709d0524bbb96c7ec4ce2952, type: 3}
+  redArmed: {fileID: 8300000, guid: 4fab7cfc8e72b9748a8686149f5d387d, type: 3}
+  redDisarmed: {fileID: 8300000, guid: 057fe4c122e87cc4a832b01e65295fd3, type: 3}
+  redBoom: {fileID: 8300000, guid: 2fb8db12c481c7740892eabf9522844b, type: 3}
+  greenArmed: {fileID: 8300000, guid: d815cba1aa75b3142973d5b57e773b94, type: 3}
+  greenBoom: {fileID: 8300000, guid: 2fb8db12c481c7740892eabf9522844b, type: 3}
 --- !u!114 &11424982
 MonoBehaviour:
   m_ObjectHideFlags: 1
