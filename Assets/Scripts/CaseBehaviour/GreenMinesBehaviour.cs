@@ -12,7 +12,11 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
 
     void Update()
 	{
-		if(timerVisible <= 3)
+		if (HasStone)
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = true;
+		}
+		else if(timerVisible <= 3)
 		{
 			Object.GetComponent<SpriteRenderer>().enabled = true;
 			timerVisible += Time.unscaledDeltaTime;
