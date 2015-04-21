@@ -12,7 +12,11 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
 
     void Update()
 	{
-		if(timerVisible <= 3)
+		if (HasStone)
+		{
+			Object.GetComponent<SpriteRenderer>().enabled = true;
+		}
+		else if(timerVisible <= 3)
 		{
 			Object.GetComponent<SpriteRenderer>().enabled = true;
 			timerVisible += Time.unscaledDeltaTime;
@@ -66,7 +70,8 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
     {
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
 		m_player = player;
-        Fragmentation();
+		Fragmentation();
+		(Grid.Instance.grid[PositionY][PositionX] as EmptyCaseBehaviour).CancelRemanant();
 		m_player = null;
     }
 
