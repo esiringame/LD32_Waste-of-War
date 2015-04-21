@@ -7,6 +7,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
 {
     public GameState State;
     public PlayerController Player { get; private set; }
+    public ThrowUI ThrowUI { get; private set; }
 
     public TimeSpan Chronometer
     {
@@ -24,6 +25,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
         State = new BeginGameState(this);
 
         Player = GetComponentInChildren<PlayerController>();
+        ThrowUI = GetComponentInChildren<ThrowUI>();
     }
 
     void Start()
@@ -50,6 +52,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
     {
         _chronometerEnabled = true;
         Player.ControlEnabled = true;
+        ThrowUI.enabled = true;
         GameUIManager.Instance.PauseBackground.GetComponent<Image>().enabled = false;
     }
 
@@ -57,6 +60,7 @@ public class GameManager : DesignPattern.Singleton<GameManager>
     {
         _chronometerEnabled = false;
         Player.ControlEnabled = false;
+        ThrowUI.enabled = false;
         GameUIManager.Instance.PauseBackground.GetComponent<Image>().enabled = true;
     }
 
