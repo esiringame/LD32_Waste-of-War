@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
 	public bool IsMoving { get; private set; }
 
-    public AudioClip dead, trash_dead, water;
+    public AudioClip dead, trash_dead, water, footstep, jump;
 
     void Start()
 	{
@@ -381,6 +381,7 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_WALK_R:
 			animator.SetInteger ("state", STATE_WALK_R);
+			GetComponent<AudioSource>().PlayOneShot(footstep);
 			break;
 			
 		case STATE_IDLE_R:
@@ -389,6 +390,7 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_WALK_L:
 			animator.SetInteger ("state", STATE_WALK_L);
+			GetComponent<AudioSource>().PlayOneShot(footstep);
 			break;
 			
 		case STATE_IDLE_L:
@@ -397,6 +399,7 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_WALK_T:
 			animator.SetInteger ("state", STATE_WALK_T);
+			GetComponent<AudioSource>().PlayOneShot(footstep);
 			break;
 			
 		case STATE_IDLE_T:
@@ -405,6 +408,7 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_WALK_B:
 			animator.SetInteger ("state", STATE_WALK_B);
+			GetComponent<AudioSource>().PlayOneShot(footstep);
 			break;
 			
 		case STATE_IDLE_B:
@@ -413,18 +417,22 @@ public class PlayerController : MonoBehaviour
 			
 		case STATE_JUMP_B:
 			animator.SetInteger ("state", STATE_JUMP_B);
+			GetComponent<AudioSource>().PlayOneShot(jump);
 			break;
 			
 		case STATE_JUMP_T:
 			animator.SetInteger ("state", STATE_JUMP_T);
+			GetComponent<AudioSource>().PlayOneShot(jump);
 			break;
 			
 		case STATE_JUMP_R:
 			animator.SetInteger ("state", STATE_JUMP_R);
+			GetComponent<AudioSource>().PlayOneShot(jump);
 			break;
 			
 		case STATE_JUMP_L:
 			animator.SetInteger ("state", STATE_JUMP_L);
+			GetComponent<AudioSource>().PlayOneShot(jump);
 			break;
 
 		case STATE_THROW_B:
