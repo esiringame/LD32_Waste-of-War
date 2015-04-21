@@ -71,6 +71,7 @@ public class GreenMinesBehaviour : CaseBehaviour<GreenMinesBehaviour>
         GetComponent<AudioSource>().PlayOneShot(boom, 1.0F);
 		m_player = player;
 		Fragmentation();
+		(Grid.Instance.grid[PositionY][PositionX] as EmptyCaseBehaviour).CancelRemanant();
 		m_player = null;
     }
 
