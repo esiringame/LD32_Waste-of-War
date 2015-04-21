@@ -11,7 +11,11 @@ public class PlayerController : MonoBehaviour
     public bool IsBucketFilled = false;
 
     public bool ControlEnabled = true;
-    public float MoveSpeed = 3;
+
+    public float MoveSpeed
+    {
+        get { return IsJumping ? 6 : 2; }
+    }
 
     public int Lifes;
     public int Rocks;
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 Destination { get; private set; }
 
     private float pressedTimeElapsed;
-    private const float PressedTimePeriod = 0.2f;
+    private const float PressedTimePeriod = 0.3f;
 
     private bool alreadyLeaveCase;
 
@@ -230,7 +234,7 @@ public class PlayerController : MonoBehaviour
         Destination = transform.position;
         pressedTimeElapsed = 0;
 
-        Rocks = 0;
+        Rocks = RocksAtStartup;
         IsBucketFilled = false;
 
         alreadyLeaveCase = false;
