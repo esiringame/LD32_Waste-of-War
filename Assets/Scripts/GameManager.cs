@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : DesignPattern.Singleton<GameManager>
 {
@@ -49,18 +50,19 @@ public class GameManager : DesignPattern.Singleton<GameManager>
     {
         _chronometerEnabled = true;
         Player.ControlEnabled = true;
+        GameUIManager.Instance.PauseBackground.GetComponent<Image>().enabled = false;
     }
 
     public void Pause()
     {
         _chronometerEnabled = false;
         Player.ControlEnabled = false;
+        GameUIManager.Instance.PauseBackground.GetComponent<Image>().enabled = true;
     }
 
     public void ResetChrono()
     {
         _chronometer = 0;
-
     }
 
     public void ChangeState(GameState newState)

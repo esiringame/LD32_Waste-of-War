@@ -2,14 +2,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using DesignPattern;
 
-public class GameUIManager : MonoBehaviour
+public class GameUIManager : Singleton<GameUIManager>
 {
     public GameObject Player;
 
     public GameObject TimeText;
     public GameObject LifeText;
     public GameObject StoneText;
+
+    public GameObject PauseBackground;
 	
 	void Update ()
 	{
